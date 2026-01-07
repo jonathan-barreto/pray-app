@@ -16,5 +16,6 @@ class AppAssets {
 
   /// images
   static const String background = '$_images/background.png';
+  static const String backgroundFull = '$_images/background_full.png';
   static const String roadConstructionBarrier = '$_images/road_construction_barrier.png';
 }

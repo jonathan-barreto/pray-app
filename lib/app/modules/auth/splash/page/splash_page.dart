@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import 'package:pray_app/app/app_controller.dart';
 import 'package:pray_app/app/core/consts/app_assets.dart';
+import 'package:pray_app/app/core/consts/app_colors.dart';
 import 'package:pray_app/app/core/routes/app_router.dart';
 import 'package:pray_app/app/di/di.dart';
 import 'package:pray_app/app/modules/auth/splash/controller/splash_controller.dart';
@@ -14,40 +15,17 @@ class SplashPage extends StatefulWidget {
   State<SplashPage> createState() => _SplashPageState();
 }
 
-class _SplashPageState extends State<SplashPage>
-    with SingleTickerProviderStateMixin {
+class _SplashPageState extends State<SplashPage> {
   late final SplashController _controller;
-  late AnimationController _animationController;
-  late Animation<double> _fadeAnimation;
-  late Animation<double> _scaleAnimation;
 
   @override
   void initState() {
     super.initState();
     _controller = getIt<SplashController>();
 
-    _animationController = AnimationController(
-      duration: const Duration(seconds: 3),
-      vsync: this,
-    );
-
-    _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(
-        parent: _animationController,
-        curve: const Interval(0.0, 0.6, curve: Curves.easeIn),
-      ),
-    );
-
-    _scaleAnimation = Tween<double>(begin: 0.5, end: 1.0).animate(
-      CurvedAnimation(
-        parent: _animationController,
-        curve: const Interval(0.0, 0.8, curve: Curves.easeOutBack),
-      ),
-    );
-
-    _animationController.forward();
-
     WidgetsBinding.instance.addPostFrameCallback((_) async {
+      // return;
+
       await Future.delayed(const Duration(seconds: 3));
 
       if (!mounted) return;
@@ -78,7 +56,6 @@ class _SplashPageState extends State<SplashPage>
 
   @override
   void dispose() {
-    _animationController.dispose();
     _controller.dispose();
     super.dispose();
   }
@@ -92,17 +69,10 @@ class _SplashPageState extends State<SplashPage>
         builder: (context, _) {
           return Stack(
             children: [
-              Center(
-                child: FadeTransition(
-                  opacity: _fadeAnimation,
-                  child: ScaleTransition(
-                    scale: _scaleAnimation,
-                    child: SizedBox(
-                      width: 300,
-                      height: 300,
-                      child: Image.asset(AppAssets.logo),
-                    ),
-                  ),
+              SizedBox.expand(
+                child: Image.asset(
+                  AppAssets.backgroundFull,
+                  fit: BoxFit.cover,
                 ),
               ),
               Align(
@@ -112,7 +82,7 @@ class _SplashPageState extends State<SplashPage>
                   height: 50,
                   child: LoadingIndicator(
                     indicatorType: Indicator.ballPulse,
-                    colors: [Theme.of(context).colorScheme.primary],
+                    colors: [AppColors.white],
                     strokeWidth: 2,
                   ),
                 ),
