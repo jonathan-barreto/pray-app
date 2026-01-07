@@ -133,17 +133,26 @@ class _AppearancePageState extends State<AppearancePage> {
       margin: const EdgeInsets.only(bottom: 12),
       decoration: BoxDecoration(
         border: Border.all(
-          color: isSelected
-              ? Theme.of(context).colorScheme.primary
-              : Theme.of(
-                  context,
-                ).colorScheme.primaryContainer.withValues(alpha: 0.5),
+          color:
+              isSelected
+                  ? Theme.of(context).colorScheme.primary
+                  : Theme.of(
+                    context,
+                  ).colorScheme.primaryContainer.withValues(alpha: 0.5),
           width: isSelected ? 2 : 1,
         ),
         borderRadius: BorderRadius.circular(12),
       ),
       child: RadioListTile<String>(
         value: value,
+        groupValue: _selectedTheme,
+        onChanged: (String? newValue) {
+          if (newValue != null) {
+            setState(() {
+              // _selectedTheme = newValue;
+            });
+          }
+        },
         title: Row(
           children: [
             Container(
