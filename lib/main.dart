@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:pray_app/app/core/routes/app_router.dart';
 import 'package:pray_app/app/core/theme/app_theme.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:pray_app/app/di/di.dart' as di;
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   await di.initDependencies();
 

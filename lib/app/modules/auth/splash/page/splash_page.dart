@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:go_router/go_router.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import 'package:pray_app/app/app_controller.dart';
@@ -23,9 +24,9 @@ class _SplashPageState extends State<SplashPage> {
     super.initState();
     _controller = getIt<SplashController>();
 
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      // return;
+    FlutterNativeSplash.remove();
 
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
       await Future.delayed(const Duration(seconds: 3));
 
       if (!mounted) return;
