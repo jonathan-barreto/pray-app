@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:pray_app/app/app_controller.dart';
 import 'package:pray_app/app/domain/entities/login_response_entity.dart';
@@ -24,9 +25,15 @@ class RegisterPageController extends ChangeNotifier {
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController nameController = TextEditingController(
+      text:
+          kDebugMode ? 'user ${DateTime.now().millisecondsSinceEpoch}' : null);
+  final TextEditingController emailController = TextEditingController(
+      text: kDebugMode
+          ? '${DateTime.now().millisecondsSinceEpoch}@gmail.com'
+          : null);
+  final TextEditingController passwordController =
+      TextEditingController(text: kDebugMode ? 'senhaSegura1234' : null);
 
   bool isLoading = false;
   String? errorMessage;

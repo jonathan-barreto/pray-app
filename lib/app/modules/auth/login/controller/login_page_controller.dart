@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:pray_app/app/app_controller.dart';
 import 'package:pray_app/app/domain/entities/login_response_entity.dart';
@@ -19,11 +20,11 @@ class LoginPageController extends ChangeNotifier {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   final TextEditingController emailController = TextEditingController(
-    text: 'jonathan.barreto@snowmanlabs.com',
+    text: kDebugMode ? 'jonathan777barreto@gmail.com' : null,
   );
 
   final TextEditingController passwordController = TextEditingController(
-    text: 'senhaSegura1234',
+    text: kDebugMode ? 'senhaSegura1234' : null,
   );
 
   bool isLoading = false;
