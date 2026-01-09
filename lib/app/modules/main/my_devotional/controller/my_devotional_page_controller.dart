@@ -17,10 +17,10 @@ class MyDevotionalPageController extends ChangeNotifier {
     required GenerateDevotionalUsecase generateDevotionalUsecase,
     required GetPrivateDevotionalByIdUsecase getPrivateDevotionalByIdUsecase,
     required GetLatestPrivateDevotionalUsecase
-    getLatestPrivateDevotionalUsecase,
-  }) : _generateDevotionalUsecase = generateDevotionalUsecase,
-       _getPrivateDevotionalByIdUsecase = getPrivateDevotionalByIdUsecase,
-       _getLatestPrivateDevotionalUsecase = getLatestPrivateDevotionalUsecase;
+        getLatestPrivateDevotionalUsecase,
+  })  : _generateDevotionalUsecase = generateDevotionalUsecase,
+        _getPrivateDevotionalByIdUsecase = getPrivateDevotionalByIdUsecase,
+        _getLatestPrivateDevotionalUsecase = getLatestPrivateDevotionalUsecase;
 
   final TextEditingController feelingController = TextEditingController();
   final int maxCharacters = 100;
@@ -174,7 +174,9 @@ class MyDevotionalPageController extends ChangeNotifier {
       },
       (response) {
         if (response.success) {
-          lastDevotional = response.data;
+          final devotional = response.data;
+          lastDevotional =
+              devotional.title.trim().isNotEmpty ? devotional : null;
         } else {
           lastDevotional = null;
         }
