@@ -3,30 +3,30 @@ import 'package:go_router/go_router.dart';
 import 'package:pray_app/app/core/routes/app_router.dart';
 import 'package:pray_app/app/core/widgets/app_button.dart';
 import 'package:pray_app/app/core/widgets/email_text_field.dart';
+import 'package:pray_app/app/core/widgets/name_text_field.dart';
 import 'package:pray_app/app/core/widgets/password_text_field.dart';
 import 'package:pray_app/app/di/di.dart';
-import 'package:pray_app/app/modules/auth/login/controller/login_page_controller.dart';
-import 'package:pray_app/app/modules/auth/login/widgets/login_forgot_password_button.dart';
-import 'package:pray_app/app/modules/auth/login/widgets/login_header.dart';
-import 'package:pray_app/app/modules/auth/login/widgets/login_signup_prompt.dart';
+import 'package:pray_app/app/modules/auth/register/controller/register_page_controller.dart';
+import 'package:pray_app/app/modules/auth/register/widgets/register_header.dart';
+import 'package:pray_app/app/modules/auth/register/widgets/register_login_prompt.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
-  late final LoginPageController _controller;
+class _RegisterPageState extends State<RegisterPage> {
+  late final RegisterPageController _controller;
 
   @override
   void initState() {
     super.initState();
-    _controller = getIt<LoginPageController>();
+    _controller = getIt<RegisterPageController>();
   }
 
-  Future<void> _loginOnPressed() async {
+  Future<void> _registerOnPressed() async {
     if (_controller.isLoading) {
       return;
     }
@@ -34,14 +34,14 @@ class _LoginPageState extends State<LoginPage> {
     if (_controller.formKey.currentState?.validate() ?? false) {
       FocusScope.of(context).unfocus();
 
-      await _controller.login(deviceToken: 'abc123xyz_device_token_opcional');
+      await _controller.register(deviceToken: 'device_token');
 
       if (!mounted) {
         return;
       }
 
       if (_controller.errorMessage != null) {
-        debugPrint('Login page showing error: ${_controller.errorMessage}');
+        debugPrint('Register page showing error: ${_controller.errorMessage}');
         ScaffoldMessenger.of(context)
           ..clearSnackBars()
           ..showSnackBar(
@@ -55,7 +55,9 @@ class _LoginPageState extends State<LoginPage> {
         return;
       }
 
-      GoRouter.of(context).goNamed(AppRoutes.splashName);
+      if (_controller.registrationSuccess) {
+        GoRouter.of(context).go(AppRoutes.splash);
+      }
     }
   }
 
@@ -83,25 +85,25 @@ class _LoginPageState extends State<LoginPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const SizedBox(height: 40),
-                      const LoginHeader(),
+                      const RegisterHeader(),
                       const SizedBox(height: 48),
+                      NameTextField(controller: _controller.nameController),
+                      const SizedBox(height: 20),
                       EmailTextField(controller: _controller.emailController),
                       const SizedBox(height: 20),
                       PasswordTextField(
                         controller: _controller.passwordController,
                       ),
-                      const SizedBox(height: 12),
-                      LoginForgotPasswordButton(onPressed: () {}),
                       const SizedBox(height: 32),
                       AppButton(
-                        label: 'Entrar',
+                        label: 'Cadastrar',
                         isLoading: _controller.isLoading,
-                        onPressed: () => _loginOnPressed(),
+                        onPressed: () => _registerOnPressed(),
                       ),
                       const SizedBox(height: 24),
-                      LoginSignupPrompt(
+                      RegisterLoginPrompt(
                         onTap: () {
-                          GoRouter.of(context).go(AppRoutes.register);
+                          GoRouter.of(context).go(AppRoutes.login);
                         },
                       ),
                     ],

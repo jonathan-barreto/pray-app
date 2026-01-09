@@ -48,6 +48,7 @@ import 'package:pray_app/app/domain/usecases/update_email_usecase.dart';
 import 'package:pray_app/app/domain/usecases/update_password_usecase.dart';
 import 'package:pray_app/app/domain/usecases/update_profile_usecase.dart';
 import 'package:pray_app/app/modules/auth/login/controller/login_page_controller.dart';
+import 'package:pray_app/app/modules/auth/register/controller/register_page_controller.dart';
 import 'package:pray_app/app/modules/auth/splash/controller/splash_controller.dart';
 import 'package:pray_app/app/modules/devotional/controller/devotional_page_controller.dart';
 import 'package:pray_app/app/modules/favorite_passages/controller/favorite_passages_page_controller.dart';
@@ -289,6 +290,14 @@ void _registerControllers() {
   // Register controller implementations here
   getIt.registerFactory<LoginPageController>(
     () => LoginPageController(
+      loginUsecase: getIt<LoginUsecase>(),
+      saveTokenUsecase: getIt<SaveTokenUsecase>(),
+    ),
+  );
+
+  getIt.registerFactory<RegisterPageController>(
+    () => RegisterPageController(
+      registerUsecase: getIt<RegisterUsecase>(),
       loginUsecase: getIt<LoginUsecase>(),
       saveTokenUsecase: getIt<SaveTokenUsecase>(),
     ),

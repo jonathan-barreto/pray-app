@@ -2,6 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:pray_app/app/modules/about/page/about_page.dart';
 import 'package:pray_app/app/modules/appearance/page/appearance_page.dart';
 import 'package:pray_app/app/modules/auth/login/page/login_page.dart';
+import 'package:pray_app/app/modules/auth/register/page/register_page.dart';
 import 'package:pray_app/app/modules/auth/splash/page/splash_page.dart';
 import 'package:pray_app/app/modules/devotional/page/devotional_page.dart';
 import 'package:pray_app/app/modules/favorite_passages/page/favorite_passages_page.dart';
@@ -22,6 +23,7 @@ class AppRoutes {
   static const splash = '/';
   static const welcome = '/welcome';
   static const login = '/login';
+  static const register = '/register';
   static const home = '/home';
   static const devotional = '/devotional';
   static const metrics = '/metrics';
@@ -43,6 +45,7 @@ class AppRoutes {
   static const splashName = 'splash';
   static const welcomeName = 'welcome';
   static const loginName = 'login';
+  static const registerName = 'register';
   static const homeName = 'home';
   static const devotionalName = 'devotional';
   static const privateDevotionalsName = 'privateDevotionals';
@@ -79,6 +82,11 @@ final GoRouter appRouter = GoRouter(
       path: AppRoutes.login,
       name: AppRoutes.loginName,
       builder: (context, state) => const LoginPage(),
+    ),
+    GoRoute(
+      path: AppRoutes.register,
+      name: AppRoutes.registerName,
+      builder: (context, state) => const RegisterPage(),
     ),
     GoRoute(
       path: AppRoutes.home,
