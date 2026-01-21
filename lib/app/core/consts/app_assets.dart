@@ -13,9 +13,14 @@ class AppAssets {
   /// persons
   static const String person1 = '$_persons/person1.png';
   static const String person2 = '$_persons/person2.png';
+  static const String persons = '$_persons/persons.png';
 
   /// images
   static const String background = '$_images/background.png';
   static const String backgroundFull = '$_images/background_full.png';
-  static const String roadConstructionBarrier = '$_images/road_construction_barrier.png';
+  static const String roadConstructionBarrier =
+      '$_images/road_construction_barrier.png';
+
+  // logos
+  static const String prayLogo = '$_images/pray_logo_v4.png';
 }

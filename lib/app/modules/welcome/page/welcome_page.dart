@@ -19,7 +19,6 @@ class WelcomePage extends StatelessWidget {
           child: Column(
             children: [
               const Expanded(child: WelcomeIllustration()),
-              const SizedBox(height: 48),
               const WelcomeHeadline(),
               const SizedBox(height: 16),
               const WelcomeDescription(),

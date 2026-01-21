@@ -4,7 +4,6 @@ import 'package:go_router/go_router.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import 'package:pray_app/app/app_controller.dart';
 import 'package:pray_app/app/core/consts/app_assets.dart';
-import 'package:pray_app/app/core/consts/app_colors.dart';
 import 'package:pray_app/app/core/routes/app_router.dart';
 import 'package:pray_app/app/di/di.dart';
 import 'package:pray_app/app/modules/auth/splash/controller/splash_controller.dart';
@@ -70,10 +69,10 @@ class _SplashPageState extends State<SplashPage> {
         builder: (context, _) {
           return Stack(
             children: [
-              SizedBox.expand(
+              Align(
+                alignment: Alignment.center,
                 child: Image.asset(
-                  AppAssets.backgroundFull,
-                  fit: BoxFit.cover,
+                  AppAssets.prayLogo,
                 ),
               ),
               Align(
@@ -83,7 +82,7 @@ class _SplashPageState extends State<SplashPage> {
                   height: 50,
                   child: LoadingIndicator(
                     indicatorType: Indicator.ballPulse,
-                    colors: [AppColors.white],
+                    colors: [Theme.of(context).colorScheme.primary],
                     strokeWidth: 2,
                   ),
                 ),

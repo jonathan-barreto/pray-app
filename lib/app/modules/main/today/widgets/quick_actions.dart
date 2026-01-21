@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pray_app/app/core/consts/app_colors.dart';
+import 'package:pray_app/app/core/routes/app_router.dart';
 import 'package:pray_app/app/domain/entities/calendar_day_entity.dart';
 import 'package:pray_app/app/modules/main/today/widgets/day_action.dart';
 
@@ -29,7 +31,7 @@ class QuickActions extends StatelessWidget {
         Align(
           alignment: Alignment.centerRight,
           child: TextButton.icon(
-            onPressed: () {},
+            onPressed: () => GoRouter.of(context).push(AppRoutes.metrics),
             icon: Icon(
               Icons.arrow_forward,
               size: 16,
@@ -38,10 +40,10 @@ class QuickActions extends StatelessWidget {
             label: Text(
               'Ver minhas métricas',
               style: Theme.of(context).textTheme.labelMedium?.copyWith(
-                fontWeight: FontWeight.w600,
-                color: AppColors.primary,
-                fontSize: 13,
-              ),
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.primary,
+                    fontSize: 13,
+                  ),
             ),
             style: TextButton.styleFrom(
               padding: EdgeInsets.zero,

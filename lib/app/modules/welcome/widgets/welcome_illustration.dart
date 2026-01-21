@@ -8,9 +8,9 @@ class WelcomeIllustration extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Image.asset(
-        AppAssets.person2,
+        AppAssets.prayLogo,
         fit: BoxFit.contain,
-        semanticLabel: 'Pessoa adorando',
+        semanticLabel: 'Logo da Pray',
       ),
     );
   }
