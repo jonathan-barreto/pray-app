@@ -7,6 +7,8 @@ class AppEndpoints {
   // Auth endpoints
   static const String register = '/register';
   static const String login = '/login';
+  static const String passwordResetRequest = '/user-password-reset-request';
+  static const String passwordResetConfirm = '/user-password-reset-confirm';
 
   // Profile endpoints
   static const String profile = '/profile';

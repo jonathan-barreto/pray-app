@@ -1,9 +1,12 @@
 import 'package:go_router/go_router.dart';
 import 'package:pray_app/app/modules/about/page/about_page.dart';
 import 'package:pray_app/app/modules/appearance/page/appearance_page.dart';
+import 'package:pray_app/app/modules/auth/forgot_password/page/forgot_password_page.dart';
 import 'package:pray_app/app/modules/auth/login/page/login_page.dart';
 import 'package:pray_app/app/modules/auth/register/page/register_page.dart';
+import 'package:pray_app/app/modules/auth/reset_password/page/reset_password_page.dart';
 import 'package:pray_app/app/modules/auth/splash/page/splash_page.dart';
+import 'package:pray_app/app/modules/auth/verify_reset_code/page/verify_reset_code_page.dart';
 import 'package:pray_app/app/modules/devotional/page/devotional_page.dart';
 import 'package:pray_app/app/modules/favorite_passages/page/favorite_passages_page.dart';
 import 'package:pray_app/app/modules/help/page/help_page.dart';
@@ -24,6 +27,9 @@ class AppRoutes {
   static const welcome = '/welcome';
   static const login = '/login';
   static const register = '/register';
+  static const forgotPassword = '/forgot-password';
+  static const verifyResetCode = '/verify-reset-code';
+  static const resetPassword = '/reset-password';
   static const home = '/home';
   static const devotional = '/devotional';
   static const metrics = '/metrics';
@@ -46,6 +52,9 @@ class AppRoutes {
   static const welcomeName = 'welcome';
   static const loginName = 'login';
   static const registerName = 'register';
+  static const forgotPasswordName = 'forgotPassword';
+  static const verifyResetCodeName = 'verifyResetCode';
+  static const resetPasswordName = 'resetPassword';
   static const homeName = 'home';
   static const devotionalName = 'devotional';
   static const privateDevotionalsName = 'privateDevotionals';
@@ -87,6 +96,32 @@ final GoRouter appRouter = GoRouter(
       path: AppRoutes.register,
       name: AppRoutes.registerName,
       builder: (context, state) => const RegisterPage(),
+    ),
+    GoRoute(
+      path: AppRoutes.forgotPassword,
+      name: AppRoutes.forgotPasswordName,
+      builder: (context, state) => const ForgotPasswordPage(),
+    ),
+    GoRoute(
+      path: AppRoutes.verifyResetCode,
+      name: AppRoutes.verifyResetCodeName,
+      builder: (context, state) {
+        final extras = state.extra as Map<String, dynamic>?;
+        final email = extras?['email'] ?? '';
+
+        return VerifyResetCodePage(email: email);
+      },
+    ),
+    GoRoute(
+      path: AppRoutes.resetPassword,
+      name: AppRoutes.resetPasswordName,
+      builder: (context, state) {
+        final extras = state.extra as Map<String, dynamic>?;
+        final email = extras?['email'] ?? '';
+        final code = extras?['code'] ?? '';
+
+        return ResetPasswordPage(email: email, code: code);
+      },
     ),
     GoRoute(
       path: AppRoutes.home,

@@ -91,7 +91,10 @@ class _LoginPageState extends State<LoginPage> {
                         controller: _controller.passwordController,
                       ),
                       const SizedBox(height: 12),
-                      LoginForgotPasswordButton(onPressed: () {}),
+                      LoginForgotPasswordButton(
+                        onPressed: () =>
+                            GoRouter.of(context).push(AppRoutes.forgotPassword),
+                      ),
                       const SizedBox(height: 32),
                       AppButton(
                         label: 'Entrar',

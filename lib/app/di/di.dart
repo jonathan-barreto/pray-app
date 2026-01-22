@@ -9,16 +9,19 @@ import 'package:pray_app/app/core/secure_storage/secure_storage_impl.dart';
 import 'package:pray_app/app/data/datasources/dashboard_datasource.dart';
 import 'package:pray_app/app/data/datasources/devotional_datasource.dart';
 import 'package:pray_app/app/data/datasources/passage_datasource.dart';
+import 'package:pray_app/app/data/datasources/password_reset_datasource.dart';
 import 'package:pray_app/app/data/datasources/token_datasource.dart';
 import 'package:pray_app/app/data/datasources/user_datasource.dart';
 import 'package:pray_app/app/data/repositories/dashboard_repository_impl.dart';
 import 'package:pray_app/app/data/repositories/devotional_repository_impl.dart';
 import 'package:pray_app/app/data/repositories/passage_repository_impl.dart';
+import 'package:pray_app/app/data/repositories/password_reset_repository_impl.dart';
 import 'package:pray_app/app/data/repositories/token_repository_impl.dart';
 import 'package:pray_app/app/data/repositories/user_repository_impl.dart';
 import 'package:pray_app/app/domain/repositories/dashboard_repository.dart';
 import 'package:pray_app/app/domain/repositories/devotional_repository.dart';
 import 'package:pray_app/app/domain/repositories/passage_repository.dart';
+import 'package:pray_app/app/domain/repositories/password_reset_repository.dart';
 import 'package:pray_app/app/domain/repositories/token_repository.dart';
 import 'package:pray_app/app/domain/repositories/user_repository.dart';
 import 'package:pray_app/app/domain/usecases/complete_devotional_usecase.dart';
@@ -40,6 +43,8 @@ import 'package:pray_app/app/domain/usecases/like_passage_usecase.dart';
 import 'package:pray_app/app/domain/usecases/like_private_devotional_usecase.dart';
 import 'package:pray_app/app/domain/usecases/like_public_devotional_usecase.dart';
 import 'package:pray_app/app/domain/usecases/login_usecase.dart';
+import 'package:pray_app/app/domain/usecases/password_reset_confirm_usecase.dart';
+import 'package:pray_app/app/domain/usecases/password_reset_request_usecase.dart';
 import 'package:pray_app/app/domain/usecases/register_usecase.dart';
 import 'package:pray_app/app/domain/usecases/save_token_usecase.dart';
 import 'package:pray_app/app/domain/usecases/submit_private_devotional_feedback_usecase.dart';
@@ -47,9 +52,12 @@ import 'package:pray_app/app/domain/usecases/submit_public_devotional_feedback_u
 import 'package:pray_app/app/domain/usecases/update_email_usecase.dart';
 import 'package:pray_app/app/domain/usecases/update_password_usecase.dart';
 import 'package:pray_app/app/domain/usecases/update_profile_usecase.dart';
+import 'package:pray_app/app/modules/auth/forgot_password/controller/forgot_password_controller.dart';
 import 'package:pray_app/app/modules/auth/login/controller/login_page_controller.dart';
 import 'package:pray_app/app/modules/auth/register/controller/register_page_controller.dart';
+import 'package:pray_app/app/modules/auth/reset_password/controller/reset_password_controller.dart';
 import 'package:pray_app/app/modules/auth/splash/controller/splash_controller.dart';
+import 'package:pray_app/app/modules/auth/verify_reset_code/controller/verify_reset_code_controller.dart';
 import 'package:pray_app/app/modules/devotional/controller/devotional_page_controller.dart';
 import 'package:pray_app/app/modules/favorite_passages/controller/favorite_passages_page_controller.dart';
 import 'package:pray_app/app/modules/main/home/controller/home_page_controller.dart';
@@ -135,6 +143,10 @@ void _registerDataSources() {
   getIt.registerFactory<PassageDataSource>(
     () => PassageDataSourceImpl(httpClient: getIt<HttpClient>()),
   );
+
+  getIt.registerFactory<PasswordResetDataSource>(
+    () => PasswordResetDataSourceImpl(httpClient: getIt<HttpClient>()),
+  );
 }
 
 void _registerRepositories() {
@@ -161,6 +173,12 @@ void _registerRepositories() {
 
   getIt.registerFactory<PassageRepository>(
     () => PassageRepositoryImpl(remoteDataSource: getIt<PassageDataSource>()),
+  );
+
+  getIt.registerFactory<PasswordResetRepository>(
+    () => PasswordResetRepositoryImpl(
+      remoteDataSource: getIt<PasswordResetDataSource>(),
+    ),
   );
 }
 
@@ -284,6 +302,18 @@ void _registerUseCases() {
   getIt.registerFactory<LikePassageUsecase>(
     () => LikePassageUsecase(repository: getIt<PassageRepository>()),
   );
+
+  getIt.registerFactory<PasswordResetRequestUsecase>(
+    () => PasswordResetRequestUsecase(
+      repository: getIt<PasswordResetRepository>(),
+    ),
+  );
+
+  getIt.registerFactory<PasswordResetConfirmUsecase>(
+    () => PasswordResetConfirmUsecase(
+      repository: getIt<PasswordResetRepository>(),
+    ),
+  );
 }
 
 void _registerControllers() {
@@ -387,5 +417,21 @@ void _registerControllers() {
   getIt.registerFactory<PassagePageController>(
     () =>
         PassagePageController(likePassageUsecase: getIt<LikePassageUsecase>()),
+  );
+
+  getIt.registerFactory<ForgotPasswordController>(
+    () => ForgotPasswordController(
+      requestUsecase: getIt<PasswordResetRequestUsecase>(),
+    ),
+  );
+
+  getIt.registerFactory<VerifyResetCodeController>(
+    () => VerifyResetCodeController(),
+  );
+
+  getIt.registerFactory<ResetPasswordController>(
+    () => ResetPasswordController(
+      confirmUsecase: getIt<PasswordResetConfirmUsecase>(),
+    ),
   );
 }

@@ -99,15 +99,15 @@ flutter:
   # see https://flutter.dev/to/font-from-package
 
 flutter_native_splash:
-  image: assets/images/pray_logo_v3.png
-  color: "#FBF8F0"
+  image: assets/images/pray_logo_v4.png
+  color: "#FFFFFF"
   android: true
   ios: true
   web: false
   fullscreen: true
   android_12:
-    image: assets/images/pray_logo_v3.png
-    color: "#FBF8F0"
+    image: assets/images/pray_logo_v4.png
+    color: "#FFFFFF"
 
 flutter_launcher_icons:
   android: true
