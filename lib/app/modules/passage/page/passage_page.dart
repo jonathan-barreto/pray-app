@@ -97,10 +97,10 @@ class _PassagePageState extends State<PassagePage> {
                   ),
                   PassageContent(passage: widget.passage),
                   PassageDescription(passage: widget.passage),
-                  PassageActions(
-                    onShare: _handleShare,
-                    onListen: _handleListen,
-                  ),
+                  // PassageActions(
+                  //   onShare: _handleShare,
+                  //   onListen: _handleListen,
+                  // ),
                 ],
               ),
             ),

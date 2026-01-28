@@ -41,7 +41,7 @@ class UserDataSourceImpl implements UserDataSource {
   final HttpClient _httpClient;
 
   UserDataSourceImpl({required HttpClient httpClient})
-    : _httpClient = httpClient;
+      : _httpClient = httpClient;
 
   @override
   Future<UserResponseModel> getUser() async {
@@ -65,7 +65,7 @@ class UserDataSourceImpl implements UserDataSource {
         endpoint: '${AppEndpoints.userMetrics}/$userId',
       );
 
-      return UserMetricsResponseModel.fromMap(jsonDecode(response.data));
+      return UserMetricsResponseModel.fromMap(response.data);
     } catch (err) {
       rethrow;
     }

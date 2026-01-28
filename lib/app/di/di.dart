@@ -64,6 +64,7 @@ import 'package:pray_app/app/modules/main/home/controller/home_page_controller.d
 import 'package:pray_app/app/modules/main/my_devotional/controller/my_devotional_page_controller.dart';
 import 'package:pray_app/app/modules/main/settings/controller/settings_page_controller.dart';
 import 'package:pray_app/app/modules/main/today/controller/today_page_controller.dart';
+import 'package:pray_app/app/modules/metrics/controller/metrics_page_controller.dart';
 import 'package:pray_app/app/modules/passage/controller/passage_page_controller.dart';
 import 'package:pray_app/app/modules/private_devotionals/controller/private_devotionals_page_controller.dart';
 import 'package:pray_app/app/modules/public_devotionals/controller/public_devotionals_page_controller.dart';
@@ -432,6 +433,12 @@ void _registerControllers() {
   getIt.registerFactory<ResetPasswordController>(
     () => ResetPasswordController(
       confirmUsecase: getIt<PasswordResetConfirmUsecase>(),
+    ),
+  );
+
+  getIt.registerFactory<MetricsPageController>(
+    () => MetricsPageController(
+      getUserMetricsUsecase: getIt<GetUserMetricsUsecase>(),
     ),
   );
 }
