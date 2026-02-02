@@ -64,32 +64,34 @@ class _SplashPageState extends State<SplashPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
-      body: ListenableBuilder(
-        listenable: AppController.instance,
-        builder: (context, _) {
-          return Stack(
-            children: [
-              Align(
-                alignment: Alignment.center,
-                child: Image.asset(
-                  AppAssets.prayLogo,
-                ),
-              ),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: SizedBox(
-                  width: 50,
-                  height: 50,
-                  child: LoadingIndicator(
-                    indicatorType: Indicator.ballPulse,
-                    colors: [Theme.of(context).colorScheme.primary],
-                    strokeWidth: 2,
+      body: SafeArea(
+        child: ListenableBuilder(
+          listenable: AppController.instance,
+          builder: (context, _) {
+            return Stack(
+              children: [
+                Align(
+                  alignment: Alignment.center,
+                  child: Image.asset(
+                    AppAssets.prayLogo,
                   ),
                 ),
-              ),
-            ],
-          );
-        },
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: SizedBox(
+                    width: 50,
+                    height: 50,
+                    child: LoadingIndicator(
+                      indicatorType: Indicator.ballPulse,
+                      colors: [Theme.of(context).colorScheme.primary],
+                      strokeWidth: 2,
+                    ),
+                  ),
+                ),
+              ],
+            );
+          },
+        ),
       ),
     );
   }

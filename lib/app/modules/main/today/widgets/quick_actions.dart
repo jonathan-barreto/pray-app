@@ -15,17 +15,23 @@ class QuickActions extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: calendar
-              .map(
-                (day) => DayAction(
-                  label: day.day.substring(0, 1).toUpperCase(),
-                  completed: day.completed,
-                  highlighted: day.isToday,
-                ),
-              )
-              .toList(),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: calendar
+                .map(
+                  (day) => Padding(
+                    padding: const EdgeInsets.only(right: 8),
+                    child: DayAction(
+                      label: day.day.substring(0, 1).toUpperCase(),
+                      completed: day.completed,
+                      highlighted: day.isToday,
+                    ),
+                  ),
+                )
+                .toList(),
+          ),
         ),
         const SizedBox(height: 16),
         Align(
