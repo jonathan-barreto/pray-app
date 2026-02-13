@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'package:pray_app/l10n/app_localizations.dart';
 import 'package:pray_app/app/modules/metrics/widgets/streak_item.dart';
 
 class StreakSection extends StatelessWidget {
@@ -20,7 +22,10 @@ class StreakSection extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
-        color:  Theme.of(context).colorScheme.primaryContainer.withValues(alpha: 0.5),
+        color: Theme.of(context)
+            .colorScheme
+            .primaryContainer
+            .withValues(alpha: 0.5),
         borderRadius: BorderRadius.circular(24),
       ),
       child: Column(
@@ -30,7 +35,7 @@ class StreakSection extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Sequência Atual',
+                AppLocalizations.of(context)!.streakCurrentTitle,
                 style: Theme.of(
                   context,
                 ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
@@ -43,7 +48,7 @@ class StreakSection extends StatelessWidget {
               Expanded(
                 child: StreakItem(
                   value: streakDays,
-                  label: 'Dias',
+                  label: AppLocalizations.of(context)!.streakDays,
                   icon: Icons.calendar_today_outlined,
                 ),
               ),
@@ -57,7 +62,7 @@ class StreakSection extends StatelessWidget {
               Expanded(
                 child: StreakItem(
                   value: streakMonths,
-                  label: 'Meses',
+                  label: AppLocalizations.of(context)!.streakMonths,
                   icon: Icons.calendar_month_outlined,
                 ),
               ),
@@ -71,7 +76,7 @@ class StreakSection extends StatelessWidget {
               Expanded(
                 child: StreakItem(
                   value: streakYears,
-                  label: 'Anos',
+                  label: AppLocalizations.of(context)!.streakYears,
                   icon: Icons.event_outlined,
                 ),
               ),
@@ -95,19 +100,19 @@ class StreakSection extends StatelessWidget {
               ),
               const SizedBox(width: 8),
               Text(
-                'Maior sequência: ',
+                AppLocalizations.of(context)!.streakLongest,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: Theme.of(
-                    context,
-                  ).colorScheme.onSurfaceVariant.withValues(alpha: 0.7),
-                ),
+                      color: Theme.of(
+                        context,
+                      ).colorScheme.onSurfaceVariant.withValues(alpha: 0.7),
+                    ),
               ),
               Text(
-                '$longestStreak dias',
+                AppLocalizations.of(context)!.streakLongestValue(longestStreak),
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: Theme.of(context).colorScheme.primary,
-                ),
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
               ),
             ],
           ),

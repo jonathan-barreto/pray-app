@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'package:pray_app/l10n/app_localizations.dart';
 import 'package:pray_app/app/core/consts/app_colors.dart';
 
 class DevotionalSwipeIndicator extends StatelessWidget {
@@ -10,11 +12,11 @@ class DevotionalSwipeIndicator extends StatelessWidget {
       child: Column(
         children: [
           Text(
-            'Deslize para continuar',
+            AppLocalizations.of(context)!.swipeToContinue,
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
-              color: AppColors.textMuted,
-              fontSize: 13,
-            ),
+                  color: AppColors.textMuted,
+                  fontSize: 13,
+                ),
           ),
           const SizedBox(height: 8),
           Icon(

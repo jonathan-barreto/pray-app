@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'package:pray_app/l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pray_app/app/core/routes/app_router.dart';
 import 'package:pray_app/app/core/widgets/devotional_card.dart';
@@ -48,6 +50,21 @@ class _TodayPageState extends State<TodayPage> {
         _controller.scrollController.jumpTo(0);
       }
     });
+  }
+
+  String _getGreeting(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final name = _controller.getFirstName();
+    final period = _controller.getGreetingPeriod();
+
+    switch (period) {
+      case 0:
+        return l10n.greetingMorning(name);
+      case 1:
+        return l10n.greetingAfternoon(name);
+      default:
+        return l10n.greetingEvening(name);
+    }
   }
 
   Future<void> _loadData() async {
@@ -153,7 +170,7 @@ class _TodayPageState extends State<TodayPage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          TodayHeader(greeting: _controller.getGreeting()),
+                          TodayHeader(greeting: _getGreeting(context)),
                           const SizedBox(height: 32),
                           QuickActions(calendar: _controller.calendar),
                         ],

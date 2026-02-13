@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'package:pray_app/l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pray_app/app/core/routes/app_router.dart';
 import 'package:pray_app/app/core/widgets/app_button.dart';
@@ -97,7 +99,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       const SizedBox(height: 32),
                       AppButton(
-                        label: 'Entrar',
+                        label: AppLocalizations.of(context)!.loginButton,
                         isLoading: _controller.isLoading,
                         onPressed: () => _loginOnPressed(),
                       ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:go_router/go_router.dart';
+import 'package:pray_app/l10n/app_localizations.dart';
 import 'package:pray_app/app/core/routes/app_router.dart';
 import 'package:pray_app/app/core/widgets/app_button.dart';
 import 'package:pray_app/app/core/widgets/app_text_field.dart';
@@ -40,9 +42,9 @@ class _EmailUpdatePageState extends State<EmailUpdatePage> {
       ScaffoldMessenger.of(context)
         ..clearSnackBars()
         ..showSnackBar(
-          const SnackBar(
+          SnackBar(
             content: Text(
-              'Email atualizado com sucesso. Por favor, verifique seu novo email.',
+              AppLocalizations.of(context)!.emailUpdateSuccess,
             ),
           ),
         );
@@ -59,7 +61,7 @@ class _EmailUpdatePageState extends State<EmailUpdatePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Atualizar Email'),
+        title: Text(AppLocalizations.of(context)!.emailUpdateAppBar),
         surfaceTintColor: Colors.transparent,
         scrolledUnderElevation: 0,
       ),
@@ -76,32 +78,35 @@ class _EmailUpdatePageState extends State<EmailUpdatePage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Atualizar Email',
+                      AppLocalizations.of(context)!.emailUpdateTitle,
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
+                            fontWeight: FontWeight.bold,
+                          ),
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      'Insira seu novo endereço de email e sua senha atual para verificação.',
+                      AppLocalizations.of(context)!.emailUpdateSubtitle,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: Theme.of(context).colorScheme.onSurfaceVariant,
-                      ),
+                            color:
+                                Theme.of(context).colorScheme.onSurfaceVariant,
+                          ),
                     ),
                     const SizedBox(height: 24),
                     AppTextField(
                       controller: _controller.emailController,
-                      hintText: 'Novo email',
+                      hintText:
+                          AppLocalizations.of(context)!.emailUpdateNewHint,
                       prefixIcon: const Icon(Icons.email_outlined),
                       keyboardType: TextInputType.emailAddress,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Por favor, insira seu email';
+                          return AppLocalizations.of(context)!.emailUpdateEmpty;
                         }
                         if (!RegExp(
                           r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
                         ).hasMatch(value)) {
-                          return 'Por favor, insira um email válido';
+                          return AppLocalizations.of(context)!
+                              .emailUpdateInvalid;
                         }
                         return null;
                       },
@@ -109,17 +114,20 @@ class _EmailUpdatePageState extends State<EmailUpdatePage> {
                     const SizedBox(height: 16),
                     PasswordTextField(
                       controller: _controller.passwordController,
-                      decoration: InputDecoration(labelText: 'Senha atual'),
+                      decoration: InputDecoration(
+                          labelText: AppLocalizations.of(context)!
+                              .emailUpdateCurrentPassword),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Por favor, insira sua senha';
+                          return AppLocalizations.of(context)!
+                              .emailUpdatePasswordEmpty;
                         }
                         return null;
                       },
                     ),
                     const SizedBox(height: 24),
                     AppButton(
-                      label: 'Atualizar Email',
+                      label: AppLocalizations.of(context)!.emailUpdateButton,
                       onPressed: _updateEmail,
                       isLoading: _controller.isLoading,
                     ),

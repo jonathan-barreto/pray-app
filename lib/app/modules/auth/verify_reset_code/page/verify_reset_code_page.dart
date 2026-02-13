@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+import 'package:pray_app/l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pray_app/app/core/routes/app_router.dart';
 import 'package:pray_app/app/core/widgets/app_button.dart';
@@ -63,7 +65,7 @@ class _VerifyResetCodePageState extends State<VerifyResetCodePage> {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: AppBar(
-        title: const Text('Verificar Código'),
+        title: Text(AppLocalizations.of(context)!.verifyCodeAppBar),
       ),
       body: ListenableBuilder(
         listenable: _controller,
@@ -78,7 +80,7 @@ class _VerifyResetCodePageState extends State<VerifyResetCodePage> {
                   children: [
                     const SizedBox(height: 24),
                     Text(
-                      'Digite o código',
+                      AppLocalizations.of(context)!.verifyCodeTitle,
                       style:
                           Theme.of(context).textTheme.headlineSmall?.copyWith(
                                 fontWeight: FontWeight.bold,
@@ -86,7 +88,8 @@ class _VerifyResetCodePageState extends State<VerifyResetCodePage> {
                     ),
                     const SizedBox(height: 16),
                     Text(
-                      'Enviamos um código de 6 dígitos para ${widget.email}',
+                      AppLocalizations.of(context)!
+                          .verifyCodeSubtitle(widget.email),
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                             color:
                                 Theme.of(context).colorScheme.onSurfaceVariant,
@@ -96,8 +99,9 @@ class _VerifyResetCodePageState extends State<VerifyResetCodePage> {
                     TextFormField(
                       controller: _controller.codeController,
                       decoration: InputDecoration(
-                        labelText: 'Código de Verificação',
-                        hintText: '123456',
+                        labelText:
+                            AppLocalizations.of(context)!.verifyCodeLabel,
+                        hintText: AppLocalizations.of(context)!.verifyCodeHint,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12),
                         ),
@@ -115,17 +119,18 @@ class _VerifyResetCodePageState extends State<VerifyResetCodePage> {
                       ],
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Digite o código';
+                          return AppLocalizations.of(context)!.verifyCodeEmpty;
                         }
                         if (value.length != 6) {
-                          return 'O código deve ter 6 dígitos';
+                          return AppLocalizations.of(context)!
+                              .verifyCodeInvalid;
                         }
                         return null;
                       },
                     ),
                     const SizedBox(height: 32),
                     AppButton(
-                      label: 'Verificar Código',
+                      label: AppLocalizations.of(context)!.verifyCodeButton,
                       onPressed: _verifyCodeOnPressed,
                     ),
                   ],

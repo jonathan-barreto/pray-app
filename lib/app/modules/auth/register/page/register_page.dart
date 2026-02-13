@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'package:pray_app/l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pray_app/app/core/routes/app_router.dart';
 import 'package:pray_app/app/core/widgets/app_button.dart';
@@ -96,7 +98,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                       const SizedBox(height: 32),
                       AppButton(
-                        label: 'Cadastrar',
+                        label: AppLocalizations.of(context)!.registerButton,
                         isLoading: _controller.isLoading,
                         onPressed: () => _registerOnPressed(),
                       ),

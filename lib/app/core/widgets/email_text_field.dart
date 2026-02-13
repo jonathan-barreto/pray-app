@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pray_app/l10n/app_localizations.dart';
 
 class EmailTextField extends StatelessWidget {
   final TextEditingController? controller;
@@ -28,8 +29,10 @@ class EmailTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final effectiveDecoration = (decoration ?? const InputDecoration()).copyWith(
-      labelText: decoration?.labelText ?? 'E-mail',
+    final effectiveDecoration =
+        (decoration ?? const InputDecoration()).copyWith(
+      labelText:
+          decoration?.labelText ?? AppLocalizations.of(context)!.emailLabel,
       prefixIcon: decoration?.prefixIcon ??
           Icon(
             Icons.email_outlined,
@@ -41,14 +44,20 @@ class EmailTextField extends StatelessWidget {
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(16),
         borderSide: BorderSide(
-          color: Theme.of(context).colorScheme.outlineVariant.withValues(alpha: 0.5),
+          color: Theme.of(context)
+              .colorScheme
+              .outlineVariant
+              .withValues(alpha: 0.5),
           width: 1.5,
         ),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(16),
         borderSide: BorderSide(
-          color: Theme.of(context).colorScheme.outlineVariant.withValues(alpha: 0.5),
+          color: Theme.of(context)
+              .colorScheme
+              .outlineVariant
+              .withValues(alpha: 0.5),
           width: 1.5,
         ),
       ),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'package:pray_app/l10n/app_localizations.dart';
 import 'package:pray_app/app/core/consts/app_colors.dart';
 import 'package:pray_app/app/core/utils/text_formatter.dart';
 import 'package:pray_app/app/core/widgets/app_button.dart';
@@ -103,12 +105,12 @@ class _DevotionalFourthPageState extends State<DevotionalFourthPage>
             FadeTransition(
               opacity: _opacityAnimation,
               child: Text(
-                'Oração',
+                AppLocalizations.of(context)!.devotionalPrayer,
                 style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                  fontWeight: FontWeight.w600,
-                  color: AppColors.primary,
-                  letterSpacing: 0.5,
-                ),
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.primary,
+                      letterSpacing: 0.5,
+                    ),
               ),
             ),
             const SizedBox(height: 24),
@@ -120,12 +122,12 @@ class _DevotionalFourthPageState extends State<DevotionalFourthPage>
                   child: Text(
                     TextFormatter.formatHtmlText(widget.devotional.prayer),
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      height: 1.8,
-                      color: AppColors.textSecondary,
-                      fontSize: 17,
-                      fontStyle: FontStyle.italic,
-                      letterSpacing: 0.2,
-                    ),
+                          height: 1.8,
+                          color: AppColors.textSecondary,
+                          fontSize: 17,
+                          fontStyle: FontStyle.italic,
+                          letterSpacing: 0.2,
+                        ),
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -139,11 +141,12 @@ class _DevotionalFourthPageState extends State<DevotionalFourthPage>
               child: SizedBox(
                 width: double.infinity,
                 child: AppButton(
-                  label: 'Compartilhar',
+                  label: AppLocalizations.of(context)!.devotionalShare,
                   onPressed: () {
                     FeatureInDevelopmentDialog.show(
                       context,
-                      featureName: 'Compartilhar',
+                      featureName:
+                          AppLocalizations.of(context)!.devotionalShare,
                     );
                   },
                   expand: false,

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:pray_app/l10n/app_localizations.dart';
+
 class AppearancePage extends StatefulWidget {
   const AppearancePage({super.key});
 
@@ -15,7 +17,7 @@ class _AppearancePageState extends State<AppearancePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Aparência'),
+        title: Text(AppLocalizations.of(context)!.appearanceAppBar),
         surfaceTintColor: Colors.transparent,
         scrolledUnderElevation: 0,
       ),
@@ -24,7 +26,7 @@ class _AppearancePageState extends State<AppearancePage> {
         padding: const EdgeInsets.all(24),
         children: [
           Text(
-            'Tema',
+            AppLocalizations.of(context)!.appearanceTheme,
             style: Theme.of(
               context,
             ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
@@ -33,24 +35,24 @@ class _AppearancePageState extends State<AppearancePage> {
           _buildThemeOption(
             context,
             value: 'light',
-            title: 'Claro',
+            title: AppLocalizations.of(context)!.appearanceLight,
             icon: Icons.light_mode,
           ),
           _buildThemeOption(
             context,
             value: 'dark',
-            title: 'Escuro',
+            title: AppLocalizations.of(context)!.appearanceDark,
             icon: Icons.dark_mode,
           ),
           _buildThemeOption(
             context,
             value: 'system',
-            title: 'Sistema',
+            title: AppLocalizations.of(context)!.appearanceSystem,
             icon: Icons.settings_brightness,
           ),
           const SizedBox(height: 32),
           Text(
-            'Tamanho da Fonte',
+            AppLocalizations.of(context)!.appearanceFontSize,
             style: Theme.of(
               context,
             ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
@@ -82,10 +84,13 @@ class _AppearancePageState extends State<AppearancePage> {
                     Text(
                       '${_fontSize.toInt()}px',
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                        color: Theme.of(
-                          context,
-                        ).colorScheme.onSurfaceVariant.withValues(alpha: 0.7),
-                      ),
+                            color: Theme.of(
+                              context,
+                            )
+                                .colorScheme
+                                .onSurfaceVariant
+                                .withValues(alpha: 0.7),
+                          ),
                     ),
                   ],
                 ),
@@ -105,11 +110,11 @@ class _AppearancePageState extends State<AppearancePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Pequeno',
+                      AppLocalizations.of(context)!.appearanceSmall,
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
                     Text(
-                      'Grande',
+                      AppLocalizations.of(context)!.appearanceLarge,
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
                   ],
@@ -133,12 +138,11 @@ class _AppearancePageState extends State<AppearancePage> {
       margin: const EdgeInsets.only(bottom: 12),
       decoration: BoxDecoration(
         border: Border.all(
-          color:
-              isSelected
-                  ? Theme.of(context).colorScheme.primary
-                  : Theme.of(
-                    context,
-                  ).colorScheme.primaryContainer.withValues(alpha: 0.5),
+          color: isSelected
+              ? Theme.of(context).colorScheme.primary
+              : Theme.of(
+                  context,
+                ).colorScheme.primaryContainer.withValues(alpha: 0.5),
           width: isSelected ? 2 : 1,
         ),
         borderRadius: BorderRadius.circular(12),
@@ -174,8 +178,9 @@ class _AppearancePageState extends State<AppearancePage> {
             Text(
               title,
               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-              ),
+                    fontWeight:
+                        isSelected ? FontWeight.bold : FontWeight.normal,
+                  ),
             ),
           ],
         ),

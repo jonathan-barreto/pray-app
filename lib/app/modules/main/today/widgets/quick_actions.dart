@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:go_router/go_router.dart';
+import 'package:pray_app/l10n/app_localizations.dart';
 import 'package:pray_app/app/core/consts/app_colors.dart';
 import 'package:pray_app/app/core/routes/app_router.dart';
 import 'package:pray_app/app/domain/entities/calendar_day_entity.dart';
@@ -44,7 +46,7 @@ class QuickActions extends StatelessWidget {
               color: AppColors.primary,
             ),
             label: Text(
-              'Ver minhas métricas',
+              AppLocalizations.of(context)!.viewMyMetrics,
               style: Theme.of(context).textTheme.labelMedium?.copyWith(
                     fontWeight: FontWeight.w600,
                     color: AppColors.primary,

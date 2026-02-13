@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'package:pray_app/l10n/app_localizations.dart';
 import 'package:pray_app/app/core/consts/app_colors.dart';
 import 'package:pray_app/app/core/widgets/feature_in_development_dialog.dart';
 
@@ -10,8 +12,8 @@ class CardActionButtons extends StatelessWidget {
   void _showListenDialog(BuildContext context) {
     showDialog(
       context: context,
-      builder: (context) =>
-          const FeatureInDevelopmentDialog(featureName: 'Ouvir'),
+      builder: (context) => FeatureInDevelopmentDialog(
+          featureName: AppLocalizations.of(context)!.listenFeature),
     );
   }
 
@@ -34,7 +36,7 @@ class CardActionButtons extends StatelessWidget {
                 const Icon(Icons.headphones_outlined, size: 18),
                 const SizedBox(width: 8),
                 Text(
-                  'Ouvir',
+                  AppLocalizations.of(context)!.listenFeature,
                   style: Theme.of(
                     context,
                   ).textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w600),
@@ -64,11 +66,11 @@ class CardActionButtons extends StatelessWidget {
                 ),
                 const SizedBox(width: 8),
                 Text(
-                  'Ler',
+                  AppLocalizations.of(context)!.readAction,
                   style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.primary,
-                  ),
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.primary,
+                      ),
                 ),
               ],
             ),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'package:pray_app/l10n/app_localizations.dart';
 import 'package:pray_app/app/core/consts/app_colors.dart';
 
 class DevotionalEmptyState extends StatelessWidget {
@@ -33,22 +35,22 @@ class DevotionalEmptyState extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           Text(
-            'Nenhum devocional gerado ainda',
+            AppLocalizations.of(context)!.emptyDevotionalTitle,
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
-              fontWeight: FontWeight.w600,
-              color: AppColors.textPrimary,
-              fontSize: 16,
-            ),
+                  fontWeight: FontWeight.w600,
+                  color: AppColors.textPrimary,
+                  fontSize: 16,
+                ),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 8),
           Text(
-            'Gere seu primeiro devocional personalizado e ele aparecerá aqui para você acessar sempre que quiser.',
+            AppLocalizations.of(context)!.emptyDevotionalDescription,
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
-              color: AppColors.textMuted,
-              fontSize: 13,
-              height: 1.5,
-            ),
+                  color: AppColors.textMuted,
+                  fontSize: 13,
+                  height: 1.5,
+                ),
             textAlign: TextAlign.center,
           ),
         ],

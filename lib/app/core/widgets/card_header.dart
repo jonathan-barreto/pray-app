@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'package:pray_app/l10n/app_localizations.dart';
 import 'package:pray_app/app/core/consts/app_colors.dart';
 import 'package:pray_app/app/core/utils/date_formatter.dart';
 
@@ -30,7 +32,6 @@ class CardHeader extends StatelessWidget {
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-
             children: [
               if (date != null) ...[
                 Text(
@@ -71,7 +72,8 @@ class CardHeader extends StatelessWidget {
                   ),
                   const SizedBox(width: 4),
                   Text(
-                    '$readingTimeMinutes min',
+                    AppLocalizations.of(context)!
+                        .readingTimeMin(readingTimeMinutes),
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
                           color: AppColors.textMuted,
                           fontSize: 13,

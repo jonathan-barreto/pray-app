@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'package:pray_app/l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pray_app/app/core/routes/app_router.dart';
 import 'package:pray_app/app/core/widgets/app_button.dart';
@@ -6,6 +8,7 @@ import 'package:pray_app/app/core/widgets/email_text_field.dart';
 import 'package:pray_app/app/core/widgets/error_dialog.dart';
 import 'package:pray_app/app/di/di.dart';
 import 'package:pray_app/app/modules/auth/forgot_password/controller/forgot_password_controller.dart';
+import 'package:pray_app/l10n/app_localizations.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({super.key});
@@ -71,7 +74,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
       child: Scaffold(
         backgroundColor: Theme.of(context).colorScheme.surface,
         appBar: AppBar(
-          title: const Text('Recuperar Senha'),
+          title: Text(AppLocalizations.of(context)!.forgotPasswordAppBar),
         ),
         body: ListenableBuilder(
           listenable: _controller,
@@ -86,7 +89,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                     children: [
                       const SizedBox(height: 24),
                       Text(
-                        'Esqueceu sua senha?',
+                        AppLocalizations.of(context)!.forgotPasswordTitle,
                         style:
                             Theme.of(context).textTheme.headlineSmall?.copyWith(
                                   fontWeight: FontWeight.bold,
@@ -94,7 +97,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                       ),
                       const SizedBox(height: 16),
                       Text(
-                        'Digite seu email e enviaremos um código de verificação para redefinir sua senha.',
+                        AppLocalizations.of(context)!.forgotPasswordSubtitle,
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                               color: Theme.of(context)
                                   .colorScheme
@@ -108,7 +111,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                       ),
                       const SizedBox(height: 32),
                       AppButton(
-                        label: 'Enviar Código',
+                        label:
+                            AppLocalizations.of(context)!.forgotPasswordButton,
                         onPressed: _requestResetOnPressed,
                         isLoading: _controller.isLoading,
                       ),

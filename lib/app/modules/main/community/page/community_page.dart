@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pray_app/l10n/app_localizations.dart';
 import 'package:pray_app/app/di/di.dart';
 import 'package:pray_app/app/modules/main/home/controller/home_page_controller.dart';
 
@@ -57,8 +58,7 @@ class _CommunityPageState extends State<CommunityPage> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24),
             child: SizedBox(
-              height:
-                  MediaQuery.of(context).size.height -
+              height: MediaQuery.of(context).size.height -
                   MediaQuery.of(context).padding.top -
                   kBottomNavigationBarHeight,
               child: Center(
@@ -66,25 +66,25 @@ class _CommunityPageState extends State<CommunityPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Em breve',
-                      style: Theme.of(context).textTheme.headlineLarge
-                          ?.copyWith(
-                            fontWeight: FontWeight.bold,
-                            color: Theme.of(context).colorScheme.primary,
-                          ),
+                      AppLocalizations.of(context)!.comingSoonTitle,
+                      style:
+                          Theme.of(context).textTheme.headlineLarge?.copyWith(
+                                fontWeight: FontWeight.bold,
+                                color: Theme.of(context).colorScheme.primary,
+                              ),
                     ),
                     const SizedBox(height: 16),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 32),
                       child: Text(
-                        'Estamos preparando um espaço especial para você compartilhar suas experiências de fé e se conectar com outros membros da comunidade.',
+                        AppLocalizations.of(context)!.comingSoonDescription,
                         textAlign: TextAlign.center,
                         style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          color: Theme.of(
-                            context,
-                          ).colorScheme.onSurface.withValues(alpha: 0.7),
-                          height: 1.6,
-                        ),
+                              color: Theme.of(
+                                context,
+                              ).colorScheme.onSurface.withValues(alpha: 0.7),
+                              height: 1.6,
+                            ),
                       ),
                     ),
                   ],

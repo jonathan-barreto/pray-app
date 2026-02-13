@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+
+import 'package:pray_app/l10n/app_localizations.dart';
 import 'package:pray_app/app/core/consts/app_colors.dart';
 
 class GeneratingMyDevotionalModal extends StatefulWidget {
@@ -16,22 +18,10 @@ class _GeneratingMyDevotionalModalState
   int _currentPhase = 0;
   Timer? _timer;
 
-  final List<Map<String, dynamic>> _phases = [
-    {
-      'icon': Icons.auto_awesome,
-      'message': 'Analisando seus sentimentos...',
-      'duration': 10,
-    },
-    {
-      'icon': Icons.create,
-      'message': 'Tecendo uma reflexão feita especialmente para você...',
-      'duration': 10,
-    },
-    {
-      'icon': Icons.star_rate,
-      'message': 'Aprimorando cada detalhe em um devocional único...',
-      'duration': 10,
-    },
+  final List<IconData> _phaseIcons = [
+    Icons.auto_awesome,
+    Icons.create,
+    Icons.star_rate,
   ];
 
   @override
@@ -42,7 +32,7 @@ class _GeneratingMyDevotionalModalState
 
   void _startPhaseTimer() {
     _timer = Timer.periodic(const Duration(seconds: 10), (timer) {
-      if (mounted && _currentPhase < _phases.length - 1) {
+      if (mounted && _currentPhase < _phaseIcons.length - 1) {
         setState(() {
           _currentPhase++;
         });
@@ -58,7 +48,11 @@ class _GeneratingMyDevotionalModalState
 
   @override
   Widget build(BuildContext context) {
-    final phase = _phases[_currentPhase];
+    final phaseMessages = [
+      AppLocalizations.of(context)!.generatingPhase1,
+      AppLocalizations.of(context)!.generatingPhase2,
+      AppLocalizations.of(context)!.generatingPhase3,
+    ];
 
     return Dialog(
       backgroundColor: Colors.transparent,
@@ -78,19 +72,19 @@ class _GeneratingMyDevotionalModalState
                 shape: BoxShape.circle,
               ),
               child: Icon(
-                phase['icon'] as IconData,
+                _phaseIcons[_currentPhase],
                 size: 48,
                 color: AppColors.primary,
               ),
             ),
             const SizedBox(height: 24),
             Text(
-              phase['message'] as String,
+              phaseMessages[_currentPhase],
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.w600,
-                color: AppColors.textPrimary,
-                fontSize: 18,
-              ),
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.textPrimary,
+                    fontSize: 18,
+                  ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 24),
@@ -104,11 +98,11 @@ class _GeneratingMyDevotionalModalState
             ),
             const SizedBox(height: 16),
             Text(
-              'Isso pode levar até 1 minuto',
+              AppLocalizations.of(context)!.generatingTimeEstimate,
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                color: AppColors.textMuted,
-                fontSize: 13,
-              ),
+                    color: AppColors.textMuted,
+                    fontSize: 13,
+                  ),
               textAlign: TextAlign.center,
             ),
           ],

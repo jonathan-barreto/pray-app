@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:pray_app/l10n/app_localizations.dart';
+
 class TermsPage extends StatelessWidget {
   const TermsPage({super.key});
 
@@ -7,7 +9,7 @@ class TermsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Termos de Uso'),
+        title: Text(AppLocalizations.of(context)!.termsAppBar),
         surfaceTintColor: Colors.transparent,
         scrolledUnderElevation: 0,
       ),
@@ -32,10 +34,10 @@ class TermsPage extends StatelessWidget {
                 const SizedBox(width: 12),
                 Expanded(
                   child: Text(
-                    'Termos e Condições de Uso',
+                    AppLocalizations.of(context)!.termsBanner,
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
+                          fontWeight: FontWeight.bold,
+                        ),
                   ),
                 ),
               ],
@@ -43,94 +45,82 @@ class TermsPage extends StatelessWidget {
           ),
           const SizedBox(height: 24),
           Text(
-            'Ao utilizar o aplicativo Pray, você concorda com os termos e condições descritos abaixo. Caso não concorde com algum ponto, recomendamos que não utilize o aplicativo.',
+            AppLocalizations.of(context)!.termsIntro,
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: Theme.of(
-                context,
-              ).colorScheme.onSurfaceVariant.withValues(alpha: 0.8),
-            ),
+                  color: Theme.of(
+                    context,
+                  ).colorScheme.onSurfaceVariant.withValues(alpha: 0.8),
+                ),
           ),
           const SizedBox(height: 24),
           _buildSection(
             context,
-            title: '1. Sobre o Pray',
-            content:
-                'O Pray é um aplicativo que utiliza tecnologia, incluindo inteligência artificial, para auxiliar usuários na reflexão bíblica e na prática da oração cristã.\n\nO Pray não oferece aconselhamento pastoral, psicológico, médico ou espiritual individualizado, nem substitui a leitura da Bíblia, a oração pessoal, o acompanhamento pastoral ou profissional.\n\nO conteúdo disponibilizado tem caráter reflexivo e devocional, não sendo apresentado como revelação divina, profecia ou orientação absoluta.',
+            title: AppLocalizations.of(context)!.termsSection1Title,
+            content: AppLocalizations.of(context)!.termsSection1Content,
           ),
           _buildSection(
             context,
-            title: '2. Elegibilidade',
-            content:
-                'Ao utilizar o Pray, você declara que:\n\n• Possui capacidade legal para aceitar estes Termos\n• As informações fornecidas no cadastro são verdadeiras e atualizadas\n• Utilizará o aplicativo de forma ética, respeitosa e em conformidade com estes Termos',
+            title: AppLocalizations.of(context)!.termsSection2Title,
+            content: AppLocalizations.of(context)!.termsSection2Content,
           ),
           _buildSection(
             context,
-            title: '3. Conta do Usuário',
-            content:
-                'Para acessar determinadas funcionalidades, é necessário criar uma conta.\n\nVocê é responsável por:\n\n• Manter a confidencialidade de suas credenciais\n• Todas as atividades realizadas em sua conta\n• Informar imediatamente qualquer uso não autorizado\n\nO Pray reserva-se o direito de suspender ou encerrar contas em caso de uso indevido ou violação destes Termos.',
+            title: AppLocalizations.of(context)!.termsSection3Title,
+            content: AppLocalizations.of(context)!.termsSection3Content,
           ),
           _buildSection(
             context,
-            title: '4. Uso de Inteligência Artificial',
-            content:
-                'O Pray utiliza inteligência artificial para gerar conteúdos devocionais com base em parâmetros definidos, incluindo sentimentos informados pelo usuário.\n\nVocê reconhece que:\n\n• O conteúdo gerado é uma leitura possível das Escrituras, não uma interpretação definitiva\n• A inteligência artificial não fala em nome de Deus\n• Nenhum conteúdo deve ser entendido como promessa específica de ação divina\n\nO uso da IA tem como objetivo auxiliar a reflexão e a oração, não substituir a experiência espiritual pessoal do usuário.',
+            title: AppLocalizations.of(context)!.termsSection4Title,
+            content: AppLocalizations.of(context)!.termsSection4Content,
           ),
           _buildSection(
             context,
-            title: '5. Devocionais Personalizados e Limites de Uso',
-            content:
-                'O Pray pode estabelecer limites na geração de devocionais personalizados, com o objetivo de:\n\n• Preservar um ritmo saudável de uso\n• Manter a qualidade da experiência\n• Garantir a sustentabilidade técnica do serviço\n\nEsses limites podem ser ajustados a qualquer momento, mediante comunicação no aplicativo.',
+            title: AppLocalizations.of(context)!.termsSection5Title,
+            content: AppLocalizations.of(context)!.termsSection5Content,
           ),
           _buildSection(
             context,
-            title: '6. Conteúdos Privados e Públicos',
-            content:
-                'Devocionais privados são gerados exclusivamente para o usuário e não são compartilhados publicamente.\n\nDevocionais públicos são disponibilizados para toda a comunidade do aplicativo.\n\nO usuário é responsável pelo conteúdo emocional ou textual que informar ao utilizar o app.',
+            title: AppLocalizations.of(context)!.termsSection6Title,
+            content: AppLocalizations.of(context)!.termsSection6Content,
           ),
           _buildSection(
             context,
-            title: '7. Uso Adequado do Aplicativo',
-            content:
-                'É vedado ao usuário:\n\n• Utilizar o Pray para fins ilegais ou abusivos\n• Tentar explorar falhas técnicas ou de segurança\n• Utilizar o conteúdo do app como substituto para aconselhamento profissional em situações graves\n\nEm casos de sofrimento intenso, ansiedade persistente ou crises emocionais, recomenda-se buscar ajuda especializada.',
+            title: AppLocalizations.of(context)!.termsSection7Title,
+            content: AppLocalizations.of(context)!.termsSection7Content,
           ),
           _buildSection(
             context,
-            title: '8. Propriedade Intelectual',
-            content:
-                'Todo o conteúdo disponibilizado no Pray, incluindo textos, design, estrutura e funcionalidades, é protegido por direitos autorais.\n\nÉ proibida a reprodução, distribuição ou modificação do conteúdo sem autorização prévia, salvo nos limites permitidos por lei.',
+            title: AppLocalizations.of(context)!.termsSection8Title,
+            content: AppLocalizations.of(context)!.termsSection8Content,
           ),
           _buildSection(
             context,
-            title: '9. Exclusão de Conta',
-            content:
-                'O usuário pode solicitar a exclusão de sua conta a qualquer momento.\n\nApós a exclusão:\n\n• Dados pessoais e conteúdos privados serão removidos, respeitando obrigações legais aplicáveis\n• O acesso ao aplicativo será encerrado de forma permanente',
+            title: AppLocalizations.of(context)!.termsSection9Title,
+            content: AppLocalizations.of(context)!.termsSection9Content,
           ),
           _buildSection(
             context,
-            title: '10. Limitação de Responsabilidade',
-            content:
-                'O Pray não se responsabiliza por:\n\n• Decisões pessoais tomadas com base no conteúdo do aplicativo\n• Interpretações individuais do conteúdo gerado\n• Eventuais indisponibilidades técnicas temporárias\n\nO uso do aplicativo é de responsabilidade exclusiva do usuário.',
+            title: AppLocalizations.of(context)!.termsSection10Title,
+            content: AppLocalizations.of(context)!.termsSection10Content,
           ),
           _buildSection(
             context,
-            title: '11. Alterações nos Termos',
-            content:
-                'O Pray pode atualizar estes Termos de Uso periodicamente.\n\nO uso contínuo do aplicativo após alterações implica concordância com os novos termos.',
+            title: AppLocalizations.of(context)!.termsSection11Title,
+            content: AppLocalizations.of(context)!.termsSection11Content,
           ),
           _buildSection(
             context,
-            title: '12. Contato',
-            content:
-                'Em caso de dúvidas, sugestões ou solicitações relacionadas a estes Termos, o usuário pode entrar em contato pelos canais oficiais disponibilizados no aplicativo.',
+            title: AppLocalizations.of(context)!.termsSection12Title,
+            content: AppLocalizations.of(context)!.termsSection12Content,
           ),
           const SizedBox(height: 16),
           Text(
-            'Última atualização: Dezembro 2025',
+            AppLocalizations.of(context)!.termsLastUpdate,
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
-              color: Theme.of(
-                context,
-              ).colorScheme.onSurfaceVariant.withValues(alpha: 0.7),
-            ),
+                  color: Theme.of(
+                    context,
+                  ).colorScheme.onSurfaceVariant.withValues(alpha: 0.7),
+                ),
             textAlign: TextAlign.center,
           ),
         ],
@@ -168,10 +158,10 @@ class TermsPage extends StatelessWidget {
           Text(
             content,
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: Theme.of(
-                context,
-              ).colorScheme.onSurfaceVariant.withValues(alpha: 0.8),
-            ),
+                  color: Theme.of(
+                    context,
+                  ).colorScheme.onSurfaceVariant.withValues(alpha: 0.8),
+                ),
           ),
         ],
       ),

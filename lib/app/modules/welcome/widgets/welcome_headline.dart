@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
-class WelcomeHeadline extends StatelessWidget {
-  final String title;
+import 'package:pray_app/l10n/app_localizations.dart';
 
-  const WelcomeHeadline({super.key, this.title = 'Bem-vindo(a)\nao Pray!'});
+class WelcomeHeadline extends StatelessWidget {
+  final String? title;
+
+  const WelcomeHeadline({super.key, this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +15,7 @@ class WelcomeHeadline extends StatelessWidget {
     return Align(
       alignment: Alignment.centerLeft,
       child: Text(
-        title,
+        title ?? AppLocalizations.of(context)!.welcomeHeadline,
         style: textTheme.displaySmall?.copyWith(
           color: colorScheme.onSurface,
           fontWeight: FontWeight.w700,

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:pray_app/l10n/app_localizations.dart';
+
 class PrivacyPage extends StatelessWidget {
   const PrivacyPage({super.key});
 
@@ -7,7 +9,7 @@ class PrivacyPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Privacidade'),
+        title: Text(AppLocalizations.of(context)!.privacyAppBar),
         surfaceTintColor: Colors.transparent,
         scrolledUnderElevation: 0,
       ),
@@ -32,10 +34,10 @@ class PrivacyPage extends StatelessWidget {
                 const SizedBox(width: 12),
                 Expanded(
                   child: Text(
-                    'A sua privacidade é levada a sério.',
+                    AppLocalizations.of(context)!.privacyBanner,
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
+                          fontWeight: FontWeight.bold,
+                        ),
                   ),
                 ),
               ],
@@ -44,48 +46,42 @@ class PrivacyPage extends StatelessWidget {
           const SizedBox(height: 24),
           _buildSection(
             context,
-            title: 'Quais dados coletamos?',
-            content:
-                'O Pray coleta apenas os dados necessários para o funcionamento do aplicativo, como:\n\n• Nome e e-mail\n• Informações de autenticação\n• Sentimentos informados para geração de devocionais\n• Interações dentro do app (curtidas, conclusões, feedbacks)',
+            title: AppLocalizations.of(context)!.privacyDataTitle,
+            content: AppLocalizations.of(context)!.privacyDataContent,
           ),
           _buildSection(
             context,
-            title: 'Como seus dados são usados?',
-            content:
-                'Seus dados são utilizados exclusivamente para:\n\n• Autenticar sua conta\n• Personalizar sua experiência no app\n• Gerar devocionais privados\n• Melhorar a qualidade do conteúdo e do serviço\n\nNunca utilizamos seus dados para fins comerciais externos ou venda a terceiros.',
+            title: AppLocalizations.of(context)!.privacyUsageTitle,
+            content: AppLocalizations.of(context)!.privacyUsageContent,
           ),
           _buildSection(
             context,
-            title: 'Devocionais privados são compartilhados?',
-            content:
-                'Não. Devocionais privados e sentimentos informados não são compartilhados com outros usuários. Eles são tratados como conteúdo pessoal.',
+            title: AppLocalizations.of(context)!.privacySharedTitle,
+            content: AppLocalizations.of(context)!.privacySharedContent,
           ),
           _buildSection(
             context,
-            title: 'Uso de inteligência artificial',
-            content:
-                'O Pray utiliza inteligência artificial para gerar conteúdos devocionais a partir de parâmetros definidos. Esses conteúdos não representam revelações divinas nem substituem a fé, a Bíblia ou a oração pessoal.',
+            title: AppLocalizations.of(context)!.privacyAiTitle,
+            content: AppLocalizations.of(context)!.privacyAiContent,
           ),
           _buildSection(
             context,
-            title: 'Posso apagar meus dados?',
-            content:
-                'Sim. Você pode solicitar a exclusão da sua conta a qualquer momento. Após a exclusão, seus dados pessoais e conteúdos privados serão removidos de forma permanente, respeitando obrigações legais aplicáveis.',
+            title: AppLocalizations.of(context)!.privacyDeleteTitle,
+            content: AppLocalizations.of(context)!.privacyDeleteContent,
           ),
           _buildSection(
             context,
-            title: 'Segurança',
-            content:
-                'Adotamos medidas técnicas e organizacionais para proteger seus dados contra acessos não autorizados, perdas ou usos indevidos.',
+            title: AppLocalizations.of(context)!.privacySecurityTitle,
+            content: AppLocalizations.of(context)!.privacySecurityContent,
           ),
           const SizedBox(height: 16),
           Text(
-            'Última atualização: Dezembro 2025',
+            AppLocalizations.of(context)!.privacyLastUpdate,
             style: Theme.of(context).textTheme.bodySmall?.copyWith(
-              color: Theme.of(
-                context,
-              ).colorScheme.onSurfaceVariant.withValues(alpha: 0.7),
-            ),
+                  color: Theme.of(
+                    context,
+                  ).colorScheme.onSurfaceVariant.withValues(alpha: 0.7),
+                ),
             textAlign: TextAlign.center,
           ),
         ],
@@ -123,10 +119,10 @@ class PrivacyPage extends StatelessWidget {
           Text(
             content,
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: Theme.of(
-                context,
-              ).colorScheme.onSurfaceVariant.withValues(alpha: 0.8),
-            ),
+                  color: Theme.of(
+                    context,
+                  ).colorScheme.onSurfaceVariant.withValues(alpha: 0.8),
+                ),
           ),
         ],
       ),

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+
+import 'package:pray_app/l10n/app_localizations.dart';
+
 import 'package:pray_app/app/modules/main/settings/widgets/user_metric_item.dart';
 
 class UserProfileCard extends StatelessWidget {
@@ -42,9 +45,9 @@ class UserProfileCard extends StatelessWidget {
                   child: Text(
                     userInitials,
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                      color: Theme.of(context).colorScheme.primary,
-                      fontWeight: FontWeight.bold,
-                    ),
+                          color: Theme.of(context).colorScheme.primary,
+                          fontWeight: FontWeight.bold,
+                        ),
                   ),
                 ),
               ),
@@ -56,17 +59,20 @@ class UserProfileCard extends StatelessWidget {
                     Text(
                       userName,
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.w600,
-                      ),
+                            fontWeight: FontWeight.w600,
+                          ),
                     ),
                     const SizedBox(height: 4),
                     Text(
                       userEmail,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: Theme.of(
-                          context,
-                        ).colorScheme.onSurfaceVariant.withValues(alpha: 0.7),
-                      ),
+                            color: Theme.of(
+                              context,
+                            )
+                                .colorScheme
+                                .onSurfaceVariant
+                                .withValues(alpha: 0.7),
+                          ),
                     ),
                   ],
                 ),
@@ -88,7 +94,7 @@ class UserProfileCard extends StatelessWidget {
                   child: UserMetricItem(
                     icon: Icons.emoji_events_outlined,
                     value: rankingValue,
-                    label: 'Ranking',
+                    label: AppLocalizations.of(context)!.profileCardRanking,
                   ),
                 ),
                 Container(
@@ -102,7 +108,7 @@ class UserProfileCard extends StatelessWidget {
                   child: UserMetricItem(
                     icon: Icons.local_fire_department_outlined,
                     value: streakValue,
-                    label: 'Sequência',
+                    label: AppLocalizations.of(context)!.profileCardStreak,
                   ),
                 ),
                 Container(
@@ -116,7 +122,7 @@ class UserProfileCard extends StatelessWidget {
                   child: UserMetricItem(
                     icon: Icons.check_circle_outline,
                     value: completedValue,
-                    label: 'Completos',
+                    label: AppLocalizations.of(context)!.profileCardCompleted,
                   ),
                 ),
               ],
@@ -147,11 +153,11 @@ class UserProfileCard extends StatelessWidget {
                   ),
                   const SizedBox(width: 8),
                   Text(
-                    'Ver minhas métricas',
+                    AppLocalizations.of(context)!.profileCardViewMetrics,
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: Theme.of(context).colorScheme.primary,
-                      fontWeight: FontWeight.w600,
-                    ),
+                          color: Theme.of(context).colorScheme.primary,
+                          fontWeight: FontWeight.w600,
+                        ),
                   ),
                 ],
               ),

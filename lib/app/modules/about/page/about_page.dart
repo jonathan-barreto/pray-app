@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pray_app/l10n/app_localizations.dart';
 
 class AboutPage extends StatelessWidget {
   const AboutPage({super.key});
@@ -7,7 +8,7 @@ class AboutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sobre'),
+        title: Text(AppLocalizations.of(context)!.aboutAppBar),
         surfaceTintColor: Colors.transparent,
         scrolledUnderElevation: 0,
       ),
@@ -37,17 +38,17 @@ class AboutPage extends StatelessWidget {
                 Text(
                   'Pray',
                   style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+                        fontWeight: FontWeight.bold,
+                      ),
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  'Versão 1.0.0',
+                  AppLocalizations.of(context)!.aboutVersion,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Theme.of(
-                      context,
-                    ).colorScheme.onSurfaceVariant.withValues(alpha: 0.7),
-                  ),
+                        color: Theme.of(
+                          context,
+                        ).colorScheme.onSurfaceVariant.withValues(alpha: 0.7),
+                      ),
                 ),
               ],
             ),
@@ -68,14 +69,14 @@ class AboutPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Sobre o Pray',
+                  AppLocalizations.of(context)!.aboutTitle,
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+                        fontWeight: FontWeight.bold,
+                      ),
                 ),
                 const SizedBox(height: 12),
                 Text(
-                  'O Pray nasceu do desejo de criar um espaço simples, respeitoso e profundo para quem quer se aproximar de Deus em meio às emoções reais da vida.\n\nAcreditamos que a fé cristã não ignora sentimentos como ansiedade, dúvida ou cansaço, mas os traz honestamente diante de Deus. Por isso, o Pray utiliza a tecnologia como ferramenta para apontar para a Escritura, estimular a oração e favorecer momentos de escuta e reflexão.\n\nO Pray não oferece respostas prontas, promessas fáceis ou soluções mágicas. Ele convida à pausa, à leitura bíblica e à oração pessoal, reconhecendo que cada jornada espiritual é única.\n\nNosso compromisso é unir cuidado teológico, linguagem responsável e experiência humana, respeitando tanto a fé quanto a consciência de cada usuário.',
+                  AppLocalizations.of(context)!.aboutDescription,
                   style: Theme.of(
                     context,
                   ).textTheme.bodyMedium?.copyWith(height: 1.6),
@@ -87,20 +88,20 @@ class AboutPage extends StatelessWidget {
           _buildInfoTile(
             context,
             icon: Icons.code,
-            title: 'Desenvolvido com',
+            title: AppLocalizations.of(context)!.aboutDevelopedWith,
             subtitle: 'Flutter & Dart',
           ),
           _buildInfoTile(
             context,
             icon: Icons.copyright,
             title: 'Copyright',
-            subtitle: '© 2025 Pray. Todos os direitos reservados.',
+            subtitle: AppLocalizations.of(context)!.aboutCopyright,
           ),
           _buildInfoTile(
             context,
             icon: Icons.update,
-            title: 'Última atualização',
-            subtitle: 'Dezembro 2025',
+            title: AppLocalizations.of(context)!.aboutLastUpdate,
+            subtitle: AppLocalizations.of(context)!.aboutLastUpdateValue,
           ),
         ],
       ),
@@ -150,10 +151,10 @@ class AboutPage extends StatelessWidget {
                 Text(
                   title,
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    color: Theme.of(
-                      context,
-                    ).colorScheme.onSurfaceVariant.withValues(alpha: 0.7),
-                  ),
+                        color: Theme.of(
+                          context,
+                        ).colorScheme.onSurfaceVariant.withValues(alpha: 0.7),
+                      ),
                 ),
                 const SizedBox(height: 4),
                 Text(

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:go_router/go_router.dart';
+import 'package:pray_app/l10n/app_localizations.dart';
 import 'package:pray_app/app/core/routes/app_router.dart';
 import 'package:pray_app/app/di/di.dart';
 import 'package:pray_app/app/modules/favorite_passages/controller/favorite_passages_page_controller.dart';
@@ -123,11 +125,11 @@ class _FavoritePassagesPageState extends State<FavoritePassagesPage> {
           onPressed: () => GoRouter.of(context).pop(),
         ),
         title: Text(
-          'Passagens Favoritas',
+          AppLocalizations.of(context)!.favoritePassagesAppBar,
           style: Theme.of(context).textTheme.titleLarge?.copyWith(
-            fontWeight: FontWeight.bold,
-            color: Theme.of(context).colorScheme.onSurface,
-          ),
+                fontWeight: FontWeight.bold,
+                color: Theme.of(context).colorScheme.onSurface,
+              ),
         ),
       ),
       body: ListenableBuilder(
@@ -158,14 +160,14 @@ class _FavoritePassagesPageState extends State<FavoritePassagesPage> {
                     Text(
                       _controller.errorMessage!,
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        color: Theme.of(context).colorScheme.onSurface,
-                      ),
+                            color: Theme.of(context).colorScheme.onSurface,
+                          ),
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 24),
                     FilledButton(
                       onPressed: _retryLoad,
-                      child: const Text('Tentar Novamente'),
+                      child: Text(AppLocalizations.of(context)!.retryButton),
                     ),
                   ],
                 ),
@@ -202,8 +204,10 @@ class _FavoritePassagesPageState extends State<FavoritePassagesPage> {
                           ),
                           const SizedBox(height: 16),
                           Text(
-                            'Nenhum resultado encontrado',
-                            style: Theme.of(context).textTheme.titleMedium
+                            AppLocalizations.of(context)!.searchNoResults,
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleMedium
                                 ?.copyWith(
                                   fontWeight: FontWeight.w600,
                                   color: Theme.of(
@@ -214,8 +218,10 @@ class _FavoritePassagesPageState extends State<FavoritePassagesPage> {
                           ),
                           const SizedBox(height: 8),
                           Text(
-                            'Tente buscar por outro termo',
-                            style: Theme.of(context).textTheme.bodyMedium
+                            AppLocalizations.of(context)!.searchTryAnother,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium
                                 ?.copyWith(
                                   color: Theme.of(
                                     context,
@@ -232,8 +238,7 @@ class _FavoritePassagesPageState extends State<FavoritePassagesPage> {
                 Expanded(
                   child: ListView.builder(
                     controller: _scrollController,
-                    itemCount:
-                        _controller.filteredPassages.length +
+                    itemCount: _controller.filteredPassages.length +
                         (_controller.isLoadingMore ? 1 : 0),
                     itemBuilder: (context, index) {
                       if (index == _controller.filteredPassages.length) {

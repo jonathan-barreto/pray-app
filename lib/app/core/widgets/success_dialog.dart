@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:pray_app/l10n/app_localizations.dart';
+
 class SuccessDialog extends StatelessWidget {
   static Future<void> show(
     BuildContext context, {
@@ -48,7 +50,7 @@ class SuccessDialog extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             Text(
-              title ?? 'Sucesso!',
+              title ?? AppLocalizations.of(context)!.successTitle,
               style: Theme.of(context)
                   .textTheme
                   .titleLarge
@@ -78,7 +80,7 @@ class SuccessDialog extends StatelessWidget {
                   ),
                 ),
                 child: Text(
-                  'Continuar',
+                  AppLocalizations.of(context)!.continueButton,
                   style: Theme.of(context).textTheme.titleSmall?.copyWith(
                         fontWeight: FontWeight.w600,
                         color: Theme.of(context).colorScheme.onPrimary,

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'package:pray_app/l10n/app_localizations.dart';
 import 'package:pray_app/app/domain/entities/devotional_entity.dart';
 import 'package:pray_app/app/modules/devotional/widgets/devotional_body_text.dart';
 import 'package:pray_app/app/modules/devotional/widgets/devotional_section_header.dart';
@@ -20,8 +22,8 @@ class DevotionalThirdPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (devotional.reflection.isNotEmpty) ...[
-            const DevotionalSectionHeader(
-              title: 'Reflexão',
+            DevotionalSectionHeader(
+              title: AppLocalizations.of(context)!.devotionalReflection,
               icon: Icons.lightbulb_outline,
             ),
             const SizedBox(height: 24),
@@ -29,8 +31,8 @@ class DevotionalThirdPage extends StatelessWidget {
             const SizedBox(height: 48),
           ],
           if (devotional.application.isNotEmpty) ...[
-            const DevotionalSectionHeader(
-              title: 'Aplicação',
+            DevotionalSectionHeader(
+              title: AppLocalizations.of(context)!.devotionalApplication,
               icon: Icons.psychology_outlined,
             ),
             const SizedBox(height: 24),

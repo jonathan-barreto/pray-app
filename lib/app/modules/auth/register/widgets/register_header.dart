@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:pray_app/l10n/app_localizations.dart';
 
 class RegisterHeader extends StatelessWidget {
-  final String title;
-  final String subtitle;
+  final String? title;
+  final String? subtitle;
 
   const RegisterHeader({
     super.key,
-    this.title = 'Crie sua conta',
-    this.subtitle = 'Junte-se a nós e comece sua jornada de fé e inspiração.',
+    this.title,
+    this.subtitle,
   });
 
   @override
@@ -16,7 +17,7 @@ class RegisterHeader extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          title,
+          title ?? AppLocalizations.of(context)!.registerTitle,
           style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                 color: Theme.of(context).colorScheme.onSurface,
                 fontWeight: FontWeight.w700,
@@ -25,7 +26,7 @@ class RegisterHeader extends StatelessWidget {
         ),
         const SizedBox(height: 12),
         Text(
-          subtitle,
+          subtitle ?? AppLocalizations.of(context)!.registerSubtitle,
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                 color: Theme.of(context).colorScheme.onSurfaceVariant,
                 height: 1.5,

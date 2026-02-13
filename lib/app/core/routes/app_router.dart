@@ -19,6 +19,8 @@ import 'package:pray_app/app/modules/privacy/page/privacy_page.dart';
 import 'package:pray_app/app/modules/private_devotionals/page/private_devotionals_page.dart';
 import 'package:pray_app/app/modules/public_devotionals/page/public_devotionals_page.dart';
 import 'package:pray_app/app/modules/terms/page/terms_page.dart';
+import 'package:pray_app/app/modules/user/email-update/page/email_update_page.dart';
+import 'package:pray_app/app/modules/user/password-update/page/password_update_page.dart';
 import 'package:pray_app/app/modules/user/profile/page/profile_page.dart';
 import 'package:pray_app/app/modules/welcome/page/welcome_page.dart';
 
@@ -152,6 +154,16 @@ final GoRouter appRouter = GoRouter(
       path: AppRoutes.profile,
       name: AppRoutes.profileName,
       builder: (context, state) => const ProfilePage(),
+    ),
+    GoRoute(
+      path: AppRoutes.email,
+      name: AppRoutes.emailName,
+      builder: (context, state) => const EmailUpdatePage(),
+    ),
+    GoRoute(
+      path: AppRoutes.password,
+      name: AppRoutes.passwordName,
+      builder: (context, state) => const PasswordUpdatePage(),
     ),
     GoRoute(
       path: AppRoutes.notifications,

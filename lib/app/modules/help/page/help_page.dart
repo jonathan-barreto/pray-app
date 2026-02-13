@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pray_app/l10n/app_localizations.dart';
 
 class HelpPage extends StatelessWidget {
   const HelpPage({super.key});
@@ -7,7 +8,7 @@ class HelpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Ajuda'),
+        title: Text(AppLocalizations.of(context)!.helpAppBar),
         surfaceTintColor: Colors.transparent,
         scrolledUnderElevation: 0,
       ),
@@ -32,10 +33,10 @@ class HelpPage extends StatelessWidget {
                 const SizedBox(width: 12),
                 Expanded(
                   child: Text(
-                    'Perguntas Frequentes (FAQ)',
+                    AppLocalizations.of(context)!.helpFaqTitle,
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
+                          fontWeight: FontWeight.bold,
+                        ),
                   ),
                 ),
               ],
@@ -44,52 +45,43 @@ class HelpPage extends StatelessWidget {
           const SizedBox(height: 16),
           _buildFaqItem(
             context,
-            question: 'O que é o Pray?',
-            answer:
-                'O Pray é um aplicativo de devocionais cristãos que utiliza tecnologia para ajudar você a refletir sobre a Bíblia e a orar a partir do que está sentindo no momento. Ele não substitui a leitura bíblica, a oração pessoal ou o acompanhamento pastoral, mas serve como apoio espiritual diário.',
+            question: AppLocalizations.of(context)!.helpQ1,
+            answer: AppLocalizations.of(context)!.helpA1,
           ),
           _buildFaqItem(
             context,
-            question: 'Como funcionam os devocionais personalizados?',
-            answer:
-                'Ao informar como você está se sentindo, o Pray gera um devocional baseado nas Escrituras, com uma reflexão e uma oração que ajudam a contextualizar a Palavra à sua experiência atual. O conteúdo é sempre fundamentado na Bíblia e apresentado como uma leitura possível, não como uma revelação absoluta.',
+            question: AppLocalizations.of(context)!.helpQ2,
+            answer: AppLocalizations.of(context)!.helpA2,
           ),
           _buildFaqItem(
             context,
-            question: 'O Pray "fala por Deus"?',
-            answer:
-                'Não. O Pray não oferece profecias, revelações ou mensagens diretas de Deus. O aplicativo atua como um facilitador de reflexão bíblica, incentivando você a orar, pensar e buscar a Deus pessoalmente.',
+            question: AppLocalizations.of(context)!.helpQ3,
+            answer: AppLocalizations.of(context)!.helpA3,
           ),
           _buildFaqItem(
             context,
-            question: 'Meus devocionais privados são realmente privados?',
-            answer:
-                'Sim. Os devocionais privados são visíveis apenas para você. Eles não são publicados, compartilhados ou exibidos para outros usuários.',
+            question: AppLocalizations.of(context)!.helpQ4,
+            answer: AppLocalizations.of(context)!.helpA4,
           ),
           _buildFaqItem(
             context,
-            question: 'Qual a diferença entre devocionais públicos e privados?',
-            answer:
-                'Devocionais públicos: conteúdos diários gerados para toda a comunidade do app.\n\nDevocionais privados: conteúdos personalizados gerados exclusivamente a partir do sentimento que você compartilha.',
+            question: AppLocalizations.of(context)!.helpQ5,
+            answer: AppLocalizations.of(context)!.helpA5,
           ),
           _buildFaqItem(
             context,
-            question: 'O que são streaks, métricas e conquistas?',
-            answer:
-                'São recursos opcionais que ajudam a acompanhar sua constância e engajamento com o app. Eles não medem espiritualidade, fé ou maturidade cristã — apenas registram uso e hábitos.',
+            question: AppLocalizations.of(context)!.helpQ6,
+            answer: AppLocalizations.of(context)!.helpA6,
           ),
           _buildFaqItem(
             context,
-            question: 'Posso excluir minha conta?',
-            answer:
-                'Sim. Você pode solicitar a exclusão da sua conta a qualquer momento. Ao fazer isso, seus dados pessoais e devocionais privados serão removidos conforme descrito na política de privacidade.',
+            question: AppLocalizations.of(context)!.helpQ7,
+            answer: AppLocalizations.of(context)!.helpA7,
           ),
           _buildFaqItem(
             context,
-            question:
-                'O Pray substitui aconselhamento pastoral ou psicológico?',
-            answer:
-                'Não. O Pray não substitui líderes espirituais, aconselhamento pastoral, terapia ou acompanhamento profissional. Em situações de sofrimento intenso, ansiedade persistente ou crise emocional, é importante buscar ajuda qualificada.',
+            question: AppLocalizations.of(context)!.helpQ8,
+            answer: AppLocalizations.of(context)!.helpA8,
           ),
         ],
       ),
@@ -126,10 +118,10 @@ class HelpPage extends StatelessWidget {
             child: Text(
               answer,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: Theme.of(
-                  context,
-                ).colorScheme.onSurfaceVariant.withValues(alpha: 0.7),
-              ),
+                    color: Theme.of(
+                      context,
+                    ).colorScheme.onSurfaceVariant.withValues(alpha: 0.7),
+                  ),
             ),
           ),
         ],

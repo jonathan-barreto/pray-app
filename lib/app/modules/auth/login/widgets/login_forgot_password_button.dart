@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:pray_app/l10n/app_localizations.dart';
 
 class LoginForgotPasswordButton extends StatelessWidget {
   final VoidCallback onPressed;
-  final String label;
+  final String? label;
 
   const LoginForgotPasswordButton({
     super.key,
     required this.onPressed,
-    this.label = 'Esqueci minha senha',
+    this.label,
   });
 
   @override
@@ -21,7 +22,7 @@ class LoginForgotPasswordButton extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
         ),
         child: Text(
-          label,
+          label ?? AppLocalizations.of(context)!.loginForgotPassword,
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 fontWeight: FontWeight.w500,
               ),

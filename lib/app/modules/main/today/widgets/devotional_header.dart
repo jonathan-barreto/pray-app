@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'package:pray_app/l10n/app_localizations.dart';
 import 'package:pray_app/app/core/utils/date_formatter.dart';
 import 'package:pray_app/app/domain/entities/devotional_entity.dart';
 import 'package:pray_app/app/modules/main/today/widgets/devotional_favorite_button.dart';
@@ -23,10 +25,10 @@ class DevotionalHeader extends StatelessWidget {
                   Text(
                     DateFormatter.formatDate(devotional?.createdAt),
                     style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                      letterSpacing: 1.3,
-                      fontWeight: FontWeight.w600,
-                      color: Theme.of(context).colorScheme.onSurfaceVariant,
-                    ),
+                          letterSpacing: 1.3,
+                          fontWeight: FontWeight.w600,
+                          color: Theme.of(context).colorScheme.onSurfaceVariant,
+                        ),
                   ),
                   const SizedBox(height: 8),
                   const DevotionalLabel(),
@@ -43,13 +45,13 @@ class DevotionalHeader extends StatelessWidget {
           children: [
             Expanded(
               child: Text(
-                devotional?.title ?? 'Carregando...',
+                devotional?.title ?? AppLocalizations.of(context)!.loading,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.w700,
-                  color: Theme.of(context).colorScheme.onSurface,
-                ),
+                      fontWeight: FontWeight.w700,
+                      color: Theme.of(context).colorScheme.onSurface,
+                    ),
               ),
             ),
           ],

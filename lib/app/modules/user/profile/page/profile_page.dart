@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:go_router/go_router.dart';
+import 'package:pray_app/l10n/app_localizations.dart';
 import 'package:pray_app/app/app_controller.dart';
 import 'package:pray_app/app/core/routes/app_router.dart';
 import 'package:pray_app/app/core/widgets/app_button.dart';
@@ -40,7 +42,9 @@ class _ProfilePageState extends State<ProfilePage> {
       ScaffoldMessenger.of(context)
         ..clearSnackBars()
         ..showSnackBar(
-          const SnackBar(content: Text('Perfil atualizado com sucesso!')),
+          SnackBar(
+              content:
+                  Text(AppLocalizations.of(context)!.profileUpdateSuccess)),
         );
       GoRouter.of(context).go(AppRoutes.splash);
     } else if (_controller.errorMessage != null) {
@@ -57,7 +61,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Perfil'),
+        title: Text(AppLocalizations.of(context)!.profileAppBar),
         surfaceTintColor: Colors.transparent,
         scrolledUnderElevation: 0,
       ),
@@ -83,7 +87,9 @@ class _ProfilePageState extends State<ProfilePage> {
                       child: Center(
                         child: Text(
                           profile?.getInitials() ?? '',
-                          style: Theme.of(context).textTheme.headlineLarge
+                          style: Theme.of(context)
+                              .textTheme
+                              .headlineLarge
                               ?.copyWith(
                                 color: Theme.of(context).colorScheme.primary,
                                 fontWeight: FontWeight.bold,
@@ -118,26 +124,26 @@ class _ProfilePageState extends State<ProfilePage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Informações Pessoais',
+                      AppLocalizations.of(context)!.profilePersonalInfo,
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
+                            fontWeight: FontWeight.bold,
+                          ),
                     ),
                     const SizedBox(height: 16),
                     AppTextField(
                       controller: _controller.nameController,
-                      hintText: 'Nome completo',
+                      hintText: AppLocalizations.of(context)!.profileNameHint,
                       prefixIcon: const Icon(Icons.person_outline),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Por favor, insira seu nome';
+                          return AppLocalizations.of(context)!.profileNameEmpty;
                         }
                         return null;
                       },
                     ),
                     const SizedBox(height: 16),
                     AppButton(
-                      label: 'Salvar Alterações',
+                      label: AppLocalizations.of(context)!.profileSaveButton,
                       onPressed: _saveProfile,
                       isLoading: _controller.isLoading,
                     ),

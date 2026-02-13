@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'package:pray_app/l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pray_app/app/core/consts/app_colors.dart';
 import 'package:pray_app/app/core/routes/app_router.dart';
@@ -19,10 +21,10 @@ class MyFavoritesSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SectionHeader(
+        SectionHeader(
           icon: Icons.favorite,
-          title: 'Meus Favoritos',
-          description: 'Devocionais personalizados que você marcou como favoritos',
+          title: AppLocalizations.of(context)!.myFavoritesTitle,
+          description: AppLocalizations.of(context)!.myFavoritesDescription,
         ),
         const SizedBox(height: 20),
         if (devotional != null) ...[
@@ -36,7 +38,8 @@ class MyFavoritesSection extends StatelessWidget {
             width: double.infinity,
             child: OutlinedButton(
               onPressed: () {
-                GoRouter.of(context).pushNamed(AppRoutes.privateDevotionalsName);
+                GoRouter.of(context)
+                    .pushNamed(AppRoutes.privateDevotionalsName);
               },
               style: OutlinedButton.styleFrom(
                 foregroundColor: Theme.of(context).colorScheme.primary,
@@ -47,7 +50,7 @@ class MyFavoritesSection extends StatelessWidget {
                 ),
               ),
               child: Text(
-                'Ver Mais Devocionais',
+                AppLocalizations.of(context)!.myFavoritesViewMore,
                 style: Theme.of(context).textTheme.labelLarge?.copyWith(
                       color: Theme.of(context).colorScheme.primary,
                       fontWeight: FontWeight.w600,
@@ -70,7 +73,7 @@ class MyFavoritesSection extends StatelessWidget {
       ),
       child: Center(
         child: Text(
-          'Nenhum favorito ainda',
+          AppLocalizations.of(context)!.myFavoritesEmpty,
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 color: AppColors.textMuted,
               ),

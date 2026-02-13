@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'package:pray_app/l10n/app_localizations.dart';
 import 'package:pray_app/app/core/consts/app_colors.dart';
 import 'package:pray_app/app/core/widgets/card_header.dart';
 import 'package:pray_app/app/domain/entities/passage_entity.dart';
@@ -27,7 +29,7 @@ class PassageCard extends StatelessWidget {
         children: [
           CardHeader(
             icon: Icons.menu_book_outlined,
-            label: 'Passagem do Dia',
+            label: AppLocalizations.of(context)!.passageOfTheDay,
             readingTimeMinutes: passage?.readingTimeEstimate ?? 1,
             date: passage?.createdAt != null
                 ? DateTime.tryParse(passage!.createdAt)
@@ -38,24 +40,24 @@ class PassageCard extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           Text(
-            passage?.verseReference ?? 'Carregando...',
+            passage?.verseReference ?? AppLocalizations.of(context)!.loading,
             style: Theme.of(context).textTheme.titleLarge?.copyWith(
-              fontWeight: FontWeight.bold,
-              color: AppColors.textPrimary,
-              fontSize: 22,
-            ),
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.textPrimary,
+                  fontSize: 22,
+                ),
           ),
           const SizedBox(height: 12),
           Text(
             passage?.verseText.replaceAll('<br>', ' ') ??
-                'Carregando texto do versículo...',
+                AppLocalizations.of(context)!.loadingVerseText,
             maxLines: 3,
             overflow: TextOverflow.ellipsis,
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: AppColors.textSecondary,
-              fontSize: 15,
-              height: 1.6,
-            ),
+                  color: AppColors.textSecondary,
+                  fontSize: 15,
+                  height: 1.6,
+                ),
           ),
           const SizedBox(height: 20),
           CardActionButtons(

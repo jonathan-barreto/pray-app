@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:go_router/go_router.dart';
+import 'package:pray_app/l10n/app_localizations.dart';
 import 'package:pray_app/app/di/di.dart';
 import 'package:pray_app/app/domain/entities/devotional_entity.dart';
 import 'package:pray_app/app/modules/devotional/controller/devotional_page_controller.dart';
@@ -72,7 +74,8 @@ class _DevotionalPageState extends State<DevotionalPage> {
         ..clearSnackBars()
         ..showSnackBar(
           SnackBar(
-            content: const Text('Avaliação enviada! Obrigado pelo feedback.'),
+            content:
+                Text(AppLocalizations.of(context)!.devotionalFeedbackSuccess),
             backgroundColor: Theme.of(context).colorScheme.primary,
           ),
         );
@@ -85,7 +88,7 @@ class _DevotionalPageState extends State<DevotionalPage> {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: AppBar(
-        title: const Text('Devocional'),
+        title: Text(AppLocalizations.of(context)!.devotionalAppBar),
         backgroundColor: Theme.of(context).colorScheme.primary,
         foregroundColor: Theme.of(context).colorScheme.onPrimary,
         surfaceTintColor: Colors.transparent,

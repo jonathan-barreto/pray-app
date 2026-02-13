@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pray_app/l10n/app_localizations.dart';
 
 class LanguagePage extends StatefulWidget {
   const LanguagePage({super.key});
@@ -20,7 +21,7 @@ class _LanguagePageState extends State<LanguagePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Idioma'),
+        title: Text(AppLocalizations.of(context)!.languageAppBar),
         surfaceTintColor: Colors.transparent,
         scrolledUnderElevation: 0,
       ),
@@ -45,7 +46,7 @@ class _LanguagePageState extends State<LanguagePage> {
                 const SizedBox(width: 12),
                 Expanded(
                   child: Text(
-                    'Selecione o idioma do aplicativo. As alterações serão aplicadas imediatamente.',
+                    AppLocalizations.of(context)!.languageDescription,
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                 ),
@@ -59,12 +60,11 @@ class _LanguagePageState extends State<LanguagePage> {
               margin: const EdgeInsets.only(bottom: 12),
               decoration: BoxDecoration(
                 border: Border.all(
-                  color:
-                      isSelected
-                          ? Theme.of(context).colorScheme.primary
-                          : Theme.of(
-                            context,
-                          ).colorScheme.primaryContainer.withValues(alpha: 0.5),
+                  color: isSelected
+                      ? Theme.of(context).colorScheme.primary
+                      : Theme.of(
+                          context,
+                        ).colorScheme.primaryContainer.withValues(alpha: 0.5),
                   width: isSelected ? 2 : 1,
                 ),
                 borderRadius: BorderRadius.circular(12),
@@ -89,9 +89,10 @@ class _LanguagePageState extends State<LanguagePage> {
                     Text(
                       language['name']!,
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        fontWeight:
-                            isSelected ? FontWeight.bold : FontWeight.normal,
-                      ),
+                            fontWeight: isSelected
+                                ? FontWeight.bold
+                                : FontWeight.normal,
+                          ),
                     ),
                   ],
                 ),

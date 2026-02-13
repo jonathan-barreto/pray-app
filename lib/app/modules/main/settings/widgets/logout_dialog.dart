@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pray_app/l10n/app_localizations.dart';
 
 class LogoutDialog extends StatelessWidget {
   const LogoutDialog({super.key});
@@ -26,7 +27,10 @@ class LogoutDialog extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.errorContainer.withValues(alpha: 0.2),
+                color: Theme.of(context)
+                    .colorScheme
+                    .errorContainer
+                    .withValues(alpha: 0.2),
                 shape: BoxShape.circle,
               ),
               child: Icon(
@@ -37,14 +41,14 @@ class LogoutDialog extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             Text(
-              'Sair da conta',
+              AppLocalizations.of(context)!.logoutDialogTitle,
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
             ),
             const SizedBox(height: 8),
             Text(
-              'Tem certeza que deseja sair?',
+              AppLocalizations.of(context)!.logoutDialogMessage,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: Theme.of(context).colorScheme.onSurfaceVariant,
                   ),
@@ -66,7 +70,7 @@ class LogoutDialog extends StatelessWidget {
                       ),
                     ),
                     child: Text(
-                      'Cancelar',
+                      AppLocalizations.of(context)!.logoutDialogCancel,
                       style: TextStyle(
                         color: Theme.of(context).colorScheme.onSurface,
                         fontWeight: FontWeight.w600,
@@ -85,8 +89,8 @@ class LogoutDialog extends StatelessWidget {
                         borderRadius: BorderRadius.circular(12),
                       ),
                     ),
-                    child: const Text(
-                      'Sair',
+                    child: Text(
+                      AppLocalizations.of(context)!.logoutDialogConfirm,
                       style: TextStyle(fontWeight: FontWeight.w600),
                     ),
                   ),

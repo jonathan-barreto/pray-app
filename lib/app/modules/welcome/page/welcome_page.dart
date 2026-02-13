@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:go_router/go_router.dart';
+import 'package:pray_app/l10n/app_localizations.dart';
 import 'package:pray_app/app/core/routes/app_router.dart';
 import 'package:pray_app/app/core/widgets/app_button.dart';
 import 'package:pray_app/app/modules/welcome/widgets/welcome_description.dart';
@@ -24,7 +26,7 @@ class WelcomePage extends StatelessWidget {
               const WelcomeDescription(),
               const SizedBox(height: 24),
               AppButton(
-                label: 'Começar',
+                label: AppLocalizations.of(context)!.welcomeButton,
                 onPressed: () =>
                     GoRouter.of(context).goNamed(AppRoutes.loginName),
               ),

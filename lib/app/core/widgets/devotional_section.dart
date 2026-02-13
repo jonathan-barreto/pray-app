@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'package:pray_app/l10n/app_localizations.dart';
 import 'package:pray_app/app/core/consts/app_colors.dart';
 import 'package:pray_app/app/core/widgets/feature_in_development_dialog.dart';
 import 'package:pray_app/app/domain/entities/devotional_entity.dart';
@@ -114,7 +116,7 @@ class DevotionalSection extends StatelessWidget {
               ),
               const SizedBox(width: 4),
               Text(
-                'Devocional',
+                AppLocalizations.of(context)!.devotionalLabel,
                 style: Theme.of(context).textTheme.labelSmall?.copyWith(
                       color: AppColors.textMuted,
                       fontSize: 12,
@@ -192,13 +194,14 @@ class DevotionalSection extends StatelessWidget {
                   onPressed: () {
                     showDialog(
                       context: context,
-                      builder: (context) => const FeatureInDevelopmentDialog(
-                        featureName: 'Ouvir',
+                      builder: (context) => FeatureInDevelopmentDialog(
+                        featureName:
+                            AppLocalizations.of(context)!.listenFeature,
                       ),
                     );
                   },
                   icon: Icon(Icons.headphones_outlined, size: 18),
-                  label: Text('Ouvir'),
+                  label: Text(AppLocalizations.of(context)!.listenFeature),
                   style: OutlinedButton.styleFrom(
                     foregroundColor: AppColors.primary,
                     side: BorderSide(color: AppColors.primary),
@@ -210,7 +213,7 @@ class DevotionalSection extends StatelessWidget {
                 child: ElevatedButton.icon(
                   onPressed: onAccessPressed,
                   icon: Icon(Icons.menu_book_outlined, size: 18),
-                  label: Text('Ler'),
+                  label: Text(AppLocalizations.of(context)!.readAction),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.primary,
                     foregroundColor: Colors.white,
@@ -233,7 +236,7 @@ class DevotionalSection extends StatelessWidget {
       ),
       child: Center(
         child: Text(
-          'Nenhum devocional ainda',
+          AppLocalizations.of(context)!.noDevotionalsYet,
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 color: AppColors.textMuted,
               ),
@@ -252,7 +255,8 @@ class DevotionalSection extends StatelessWidget {
           side: BorderSide(color: AppColors.primary),
           padding: const EdgeInsets.symmetric(vertical: 12),
         ),
-        child: Text(seeMoreButtonText ?? 'Ver Mais Devocionais'),
+        child: Text(seeMoreButtonText ??
+            AppLocalizations.of(context)!.seeMoreDevotionals),
       ),
     );
   }

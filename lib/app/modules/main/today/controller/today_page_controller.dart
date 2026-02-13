@@ -24,10 +24,10 @@ class TodayPageController extends ChangeNotifier {
     required LikePassageUsecase likePassageUsecase,
     required LikePublicDevotionalUsecase likePublicDevotionalUsecase,
     required GetUserMetricsUsecase getUserMetricsUsecase,
-  }) : _getDashboardUsecase = getDashboardUsecase,
-       _likePassageUsecase = likePassageUsecase,
-       _likePublicDevotionalUsecase = likePublicDevotionalUsecase,
-       _getUserMetricsUsecase = getUserMetricsUsecase;
+  })  : _getDashboardUsecase = getDashboardUsecase,
+        _likePassageUsecase = likePassageUsecase,
+        _likePublicDevotionalUsecase = likePublicDevotionalUsecase,
+        _getUserMetricsUsecase = getUserMetricsUsecase;
 
   final ScrollController scrollController = ScrollController();
 
@@ -68,16 +68,20 @@ class TodayPageController extends ChangeNotifier {
     _setLoading(false);
   }
 
-  String getGreeting() {
+  int getGreetingPeriod() {
     final DateTime now = DateTime.now();
 
     if (now.hour < 12) {
-      return 'Bom dia, ${AppController.instance.userProfile?.getFirstName()}!';
+      return 0;
     } else if (now.hour < 18) {
-      return 'Boa tarde, ${AppController.instance.userProfile?.getFirstName()}!';
+      return 1;
     } else {
-      return 'Boa noite, ${AppController.instance.userProfile?.getFirstName()}!';
+      return 2;
     }
+  }
+
+  String getFirstName() {
+    return AppController.instance.userProfile?.getFirstName() ?? '';
   }
 
   void initializeLikeStates({
@@ -105,7 +109,7 @@ class TodayPageController extends ChangeNotifier {
     result.get(
       (failure) {
         passageLiked = currentLiked;
-        errorMessage = failure.message ?? 'Erro ao curtir passagem';
+        errorMessage = failure.message;
         _setIsLikingPassage(false);
       },
       (response) {
@@ -133,7 +137,7 @@ class TodayPageController extends ChangeNotifier {
     result.get(
       (failure) {
         devotionalLiked = currentLiked;
-        errorMessage = failure.message ?? 'Erro ao curtir devocional';
+        errorMessage = failure.message;
         _setIsLikingDevotional(false);
       },
       (response) {

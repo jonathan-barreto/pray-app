@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:go_router/go_router.dart';
+import 'package:pray_app/l10n/app_localizations.dart';
 import 'package:pray_app/app/core/routes/app_router.dart';
 import 'package:pray_app/app/core/widgets/app_button.dart';
 import 'package:pray_app/app/core/widgets/password_text_field.dart';
@@ -39,7 +41,9 @@ class _PasswordUpdatePageState extends State<PasswordUpdatePage> {
       ScaffoldMessenger.of(context)
         ..clearSnackBars()
         ..showSnackBar(
-          const SnackBar(content: Text('Senha atualizada com sucesso.')),
+          SnackBar(
+              content:
+                  Text(AppLocalizations.of(context)!.passwordUpdateSuccess)),
         );
       GoRouter.of(context).go(AppRoutes.splash);
     } else if (_controller.errorMessage != null) {
@@ -54,7 +58,7 @@ class _PasswordUpdatePageState extends State<PasswordUpdatePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Atualizar Senha'),
+        title: Text(AppLocalizations.of(context)!.passwordUpdateAppBar),
         surfaceTintColor: Colors.transparent,
         scrolledUnderElevation: 0,
       ),
@@ -71,27 +75,30 @@ class _PasswordUpdatePageState extends State<PasswordUpdatePage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Atualizar Senha',
+                      AppLocalizations.of(context)!.passwordUpdateTitle,
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
+                            fontWeight: FontWeight.bold,
+                          ),
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      'Insira sua senha atual e a nova senha que deseja utilizar.',
+                      AppLocalizations.of(context)!.passwordUpdateSubtitle,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: Theme.of(context).colorScheme.onSurfaceVariant,
-                      ),
+                            color:
+                                Theme.of(context).colorScheme.onSurfaceVariant,
+                          ),
                     ),
                     const SizedBox(height: 24),
                     PasswordTextField(
                       controller: _controller.currentPasswordController,
-                      decoration: const InputDecoration(
-                        labelText: 'Senha atual',
+                      decoration: InputDecoration(
+                        labelText: AppLocalizations.of(context)!
+                            .passwordUpdateCurrentLabel,
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Por favor, insira sua senha atual';
+                          return AppLocalizations.of(context)!
+                              .passwordUpdateCurrentEmpty;
                         }
                         return null;
                       },
@@ -99,15 +106,18 @@ class _PasswordUpdatePageState extends State<PasswordUpdatePage> {
                     const SizedBox(height: 16),
                     PasswordTextField(
                       controller: _controller.newPasswordController,
-                      decoration: const InputDecoration(
-                        labelText: 'Nova senha',
+                      decoration: InputDecoration(
+                        labelText: AppLocalizations.of(context)!
+                            .passwordUpdateNewLabel,
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Por favor, insira sua nova senha';
+                          return AppLocalizations.of(context)!
+                              .passwordUpdateNewEmpty;
                         }
                         if (value.length < 6) {
-                          return 'A senha deve ter pelo menos 6 caracteres';
+                          return AppLocalizations.of(context)!
+                              .passwordUpdateMinLength;
                         }
                         return null;
                       },
@@ -115,22 +125,25 @@ class _PasswordUpdatePageState extends State<PasswordUpdatePage> {
                     const SizedBox(height: 16),
                     PasswordTextField(
                       controller: _controller.confirmPasswordController,
-                      decoration: const InputDecoration(
-                        labelText: 'Confirmar nova senha',
+                      decoration: InputDecoration(
+                        labelText: AppLocalizations.of(context)!
+                            .passwordUpdateConfirmLabel,
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Por favor, confirme sua nova senha';
+                          return AppLocalizations.of(context)!
+                              .passwordUpdateConfirmEmpty;
                         }
                         if (value != _controller.newPasswordController.text) {
-                          return 'As senhas não coincidem';
+                          return AppLocalizations.of(context)!
+                              .passwordUpdateMismatch;
                         }
                         return null;
                       },
                     ),
                     const SizedBox(height: 24),
                     AppButton(
-                      label: 'Atualizar Senha',
+                      label: AppLocalizations.of(context)!.passwordUpdateButton,
                       onPressed: _updatePassword,
                       isLoading: _controller.isLoading,
                     ),

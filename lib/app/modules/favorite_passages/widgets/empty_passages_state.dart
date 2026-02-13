@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:pray_app/l10n/app_localizations.dart';
+
 class EmptyPassagesState extends StatelessWidget {
   const EmptyPassagesState({super.key});
 
@@ -28,21 +30,21 @@ class EmptyPassagesState extends StatelessWidget {
             ),
             const SizedBox(height: 24),
             Text(
-              'Nenhuma passagem favorita',
+              AppLocalizations.of(context)!.favoritePassagesEmpty,
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                fontWeight: FontWeight.bold,
-                color: Theme.of(context).colorScheme.onSurface,
-              ),
+                    fontWeight: FontWeight.bold,
+                    color: Theme.of(context).colorScheme.onSurface,
+                  ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 12),
             Text(
-              'Você ainda não favoritou nenhuma passagem bíblica. Explore e favorite suas passagens preferidas!',
+              AppLocalizations.of(context)!.favoritePassagesEmptyDescription,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: Theme.of(
-                  context,
-                ).colorScheme.onSurfaceVariant.withValues(alpha: 0.8),
-              ),
+                    color: Theme.of(
+                      context,
+                    ).colorScheme.onSurfaceVariant.withValues(alpha: 0.8),
+                  ),
               textAlign: TextAlign.center,
             ),
           ],

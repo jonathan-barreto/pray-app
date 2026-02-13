@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+
+import 'package:pray_app/l10n/app_localizations.dart';
+
 import 'package:pray_app/app/core/consts/app_colors.dart';
 import 'package:pray_app/app/core/widgets/app_button.dart';
 import 'package:pray_app/app/core/widgets/app_text_field.dart';
@@ -24,7 +27,8 @@ class GenerateMyDevotionalSection extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.primaryContainer.withValues(alpha: 0.3),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppColors.primary.withValues(alpha: 0.2), width: 1),
+        border: Border.all(
+            color: AppColors.primary.withValues(alpha: 0.2), width: 1),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -39,21 +43,22 @@ class GenerateMyDevotionalSection extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Devocional Personalizado',
+                      AppLocalizations.of(context)!.personalizedDevotionalTitle,
                       maxLines: 2,
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.textPrimary,
-                        fontSize: 18,
-                      ),
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.textPrimary,
+                            fontSize: 18,
+                          ),
                       overflow: TextOverflow.ellipsis,
                     ),
                     Text(
-                      'Como você está se sentindo hoje?',
+                      AppLocalizations.of(context)!
+                          .personalizedDevotionalSubtitle,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: AppColors.textSecondary,
-                        fontSize: 14,
-                      ),
+                            color: AppColors.textSecondary,
+                            fontSize: 14,
+                          ),
                     ),
                   ],
                 ),
@@ -63,14 +68,14 @@ class GenerateMyDevotionalSection extends StatelessWidget {
           const SizedBox(height: 12),
           AppTextField(
             controller: controller,
-            hintText: 'Ex: Estou ansioso com o trabalho...',
+            hintText: AppLocalizations.of(context)!.personalizedDevotionalHint,
             maxLength: maxCharacters,
             maxLines: 3,
             enabled: !isLoading,
           ),
           const SizedBox(height: 16),
           AppButton(
-            label: 'Gerar Devocional',
+            label: AppLocalizations.of(context)!.personalizedDevotionalButton,
             onPressed: onGeneratePressed,
             icon: const Icon(Icons.auto_awesome, size: 18),
             isLoading: isLoading,

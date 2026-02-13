@@ -1,15 +1,16 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:pray_app/l10n/app_localizations.dart';
 
 class RegisterLoginPrompt extends StatelessWidget {
-  final String questionText;
-  final String actionText;
+  final String? questionText;
+  final String? actionText;
   final VoidCallback onTap;
 
   const RegisterLoginPrompt({
     super.key,
-    this.questionText = 'Já tem uma conta? ',
-    this.actionText = 'Entre agora',
+    this.questionText,
+    this.actionText,
     required this.onTap,
   });
 
@@ -22,9 +23,11 @@ class RegisterLoginPrompt extends StatelessWidget {
                 color: Theme.of(context).colorScheme.onSurfaceVariant,
               ),
           children: [
-            TextSpan(text: questionText),
             TextSpan(
-              text: actionText,
+                text: questionText ??
+                    AppLocalizations.of(context)!.registerHaveAccount),
+            TextSpan(
+              text: actionText ?? AppLocalizations.of(context)!.registerSignIn,
               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                     color: Theme.of(context).colorScheme.primary,
                     fontWeight: FontWeight.w600,

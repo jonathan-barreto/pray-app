@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'package:pray_app/l10n/app_localizations.dart';
 import 'package:pray_app/app/core/consts/app_colors.dart';
 
 class DevotionalReadingTime extends StatelessWidget {
@@ -20,11 +22,11 @@ class DevotionalReadingTime extends StatelessWidget {
         ),
         const SizedBox(width: 6),
         Text(
-          '$minutes min',
+          AppLocalizations.of(context)!.readingTimeMin(minutes),
           style: Theme.of(context).textTheme.bodySmall?.copyWith(
-            color: AppColors.textMuted,
-            fontSize: 13,
-          ),
+                color: AppColors.textMuted,
+                fontSize: 13,
+              ),
         ),
       ],
     );

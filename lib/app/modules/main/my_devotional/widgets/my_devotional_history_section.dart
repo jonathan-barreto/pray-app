@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'package:pray_app/l10n/app_localizations.dart';
 import 'package:pray_app/app/core/consts/app_colors.dart';
 import 'package:pray_app/app/domain/entities/devotional_entity.dart';
 import 'package:pray_app/app/modules/main/my_devotional/widgets/devotional_card_with_action.dart';
@@ -27,23 +29,23 @@ class MyDevotionalHistorySection extends StatelessWidget {
             Icon(Icons.history, color: AppColors.primary, size: 24),
             const SizedBox(width: 12),
             Text(
-              'Histórico',
+              AppLocalizations.of(context)!.historyTitle,
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                fontWeight: FontWeight.bold,
-                color: AppColors.textPrimary,
-                fontSize: 20,
-              ),
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.textPrimary,
+                    fontSize: 20,
+                  ),
             ),
           ],
         ),
         const SizedBox(height: 12),
         Text(
-          'Acesse todos os devocionais personalizados que você já criou. Seu último devocional aparecerá aqui.',
+          AppLocalizations.of(context)!.historyDescription,
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-            color: AppColors.textSecondary,
-            fontSize: 14,
-            height: 1.5,
-          ),
+                color: AppColors.textSecondary,
+                fontSize: 14,
+                height: 1.5,
+              ),
         ),
         const SizedBox(height: 20),
         if (isLoading)

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'package:pray_app/l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pray_app/app/core/routes/app_router.dart';
 import 'package:pray_app/app/core/widgets/app_button.dart';
@@ -78,7 +80,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: AppBar(
-        title: const Text('Nova Senha'),
+        title: Text(AppLocalizations.of(context)!.resetPasswordAppBar),
       ),
       body: ListenableBuilder(
         listenable: _controller,
@@ -93,7 +95,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                   children: [
                     const SizedBox(height: 24),
                     Text(
-                      'Criar nova senha',
+                      AppLocalizations.of(context)!.resetPasswordTitle,
                       style:
                           Theme.of(context).textTheme.headlineSmall?.copyWith(
                                 fontWeight: FontWeight.bold,
@@ -101,7 +103,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                     ),
                     const SizedBox(height: 16),
                     Text(
-                      'Digite sua nova senha. Certifique-se de que seja segura e fácil de lembrar.',
+                      AppLocalizations.of(context)!.resetPasswordSubtitle,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                             color:
                                 Theme.of(context).colorScheme.onSurfaceVariant,
@@ -110,29 +112,33 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                     const SizedBox(height: 32),
                     PasswordTextField(
                       controller: _controller.passwordController,
-                      decoration:
-                          const InputDecoration(labelText: 'Nova Senha'),
+                      decoration: InputDecoration(
+                          labelText: AppLocalizations.of(context)!
+                              .resetPasswordNewLabel),
                       enabled: !_controller.isLoading,
                     ),
                     const SizedBox(height: 16),
                     PasswordTextField(
                       controller: _controller.confirmPasswordController,
-                      decoration:
-                          const InputDecoration(labelText: 'Confirmar Senha'),
+                      decoration: InputDecoration(
+                          labelText: AppLocalizations.of(context)!
+                              .resetPasswordConfirmLabel),
                       enabled: !_controller.isLoading,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Confirme sua senha';
+                          return AppLocalizations.of(context)!
+                              .resetPasswordConfirmEmpty;
                         }
                         if (value != _controller.passwordController.text) {
-                          return 'As senhas não coincidem';
+                          return AppLocalizations.of(context)!
+                              .resetPasswordMismatch;
                         }
                         return null;
                       },
                     ),
                     const SizedBox(height: 32),
                     AppButton(
-                      label: 'Redefinir Senha',
+                      label: AppLocalizations.of(context)!.resetPasswordButton,
                       onPressed: _resetPasswordOnPressed,
                       isLoading: _controller.isLoading,
                     ),

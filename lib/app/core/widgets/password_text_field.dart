@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pray_app/l10n/app_localizations.dart';
 
 class PasswordTextField extends StatefulWidget {
   final TextEditingController? controller;
@@ -41,7 +42,8 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
   Widget build(BuildContext context) {
     final effectiveDecoration =
         (widget.decoration ?? const InputDecoration()).copyWith(
-      labelText: widget.decoration?.labelText ?? 'Senha',
+      labelText: widget.decoration?.labelText ??
+          AppLocalizations.of(context)!.passwordLabel,
       prefixIcon: widget.decoration?.prefixIcon ??
           Icon(
             Icons.lock_outline,

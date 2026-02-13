@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pray_app/l10n/app_localizations.dart';
 
 class NotificationsPage extends StatefulWidget {
   const NotificationsPage({super.key});
@@ -18,7 +19,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Notificações'),
+        title: Text(AppLocalizations.of(context)!.notificationsAppBar),
         surfaceTintColor: Colors.transparent,
         scrolledUnderElevation: 0,
       ),
@@ -43,7 +44,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                 const SizedBox(width: 12),
                 Expanded(
                   child: Text(
-                    'Personalize suas notificações para não perder nenhum conteúdo importante.',
+                    AppLocalizations.of(context)!.notificationsDescription,
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                 ),
@@ -52,12 +53,14 @@ class _NotificationsPageState extends State<NotificationsPage> {
           ),
           _buildSection(
             context,
-            title: 'Notificações Push',
+            title: AppLocalizations.of(context)!.notificationsPushSection,
             items: [
               _buildSwitchTile(
                 context,
-                title: 'Devocional Diário',
-                subtitle: 'Receba lembretes do devocional do dia',
+                title:
+                    AppLocalizations.of(context)!.notificationsDailyDevotional,
+                subtitle: AppLocalizations.of(context)!
+                    .notificationsDailyDevotionalSubtitle,
                 value: _dailyDevotional,
                 onChanged: (value) {
                   setState(() {
@@ -67,8 +70,9 @@ class _NotificationsPageState extends State<NotificationsPage> {
               ),
               _buildSwitchTile(
                 context,
-                title: 'Novo Conteúdo',
-                subtitle: 'Notificações sobre novos devocionais',
+                title: AppLocalizations.of(context)!.notificationsNewContent,
+                subtitle: AppLocalizations.of(context)!
+                    .notificationsNewContentSubtitle,
                 value: _newContent,
                 onChanged: (value) {
                   setState(() {
@@ -78,8 +82,9 @@ class _NotificationsPageState extends State<NotificationsPage> {
               ),
               _buildSwitchTile(
                 context,
-                title: 'Conquistas',
-                subtitle: 'Receba notificações de conquistas',
+                title: AppLocalizations.of(context)!.notificationsAchievements,
+                subtitle: AppLocalizations.of(context)!
+                    .notificationsAchievementsSubtitle,
                 value: _achievements,
                 onChanged: (value) {
                   setState(() {
@@ -89,8 +94,9 @@ class _NotificationsPageState extends State<NotificationsPage> {
               ),
               _buildSwitchTile(
                 context,
-                title: 'Lembretes',
-                subtitle: 'Lembretes personalizados',
+                title: AppLocalizations.of(context)!.notificationsReminders,
+                subtitle: AppLocalizations.of(context)!
+                    .notificationsRemindersSubtitle,
                 value: _reminders,
                 onChanged: (value) {
                   setState(() {
@@ -102,12 +108,13 @@ class _NotificationsPageState extends State<NotificationsPage> {
           ),
           _buildSection(
             context,
-            title: 'E-mail',
+            title: AppLocalizations.of(context)!.notificationsEmailSection,
             items: [
               _buildSwitchTile(
                 context,
-                title: 'Notificações por E-mail',
-                subtitle: 'Receba atualizações por e-mail',
+                title: AppLocalizations.of(context)!.notificationsEmailToggle,
+                subtitle: AppLocalizations.of(context)!
+                    .notificationsEmailToggleSubtitle,
                 value: _emailNotifications,
                 onChanged: (value) {
                   setState(() {
@@ -135,11 +142,11 @@ class _NotificationsPageState extends State<NotificationsPage> {
           child: Text(
             title,
             style: Theme.of(context).textTheme.titleSmall?.copyWith(
-              fontWeight: FontWeight.bold,
-              color: Theme.of(
-                context,
-              ).colorScheme.onSurfaceVariant.withValues(alpha: 0.7),
-            ),
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(
+                    context,
+                  ).colorScheme.onSurfaceVariant.withValues(alpha: 0.7),
+                ),
           ),
         ),
         ...items,
@@ -165,10 +172,10 @@ class _NotificationsPageState extends State<NotificationsPage> {
       subtitle: Text(
         subtitle,
         style: Theme.of(context).textTheme.bodySmall?.copyWith(
-          color: Theme.of(
-            context,
-          ).colorScheme.onSurfaceVariant.withValues(alpha: 0.7),
-        ),
+              color: Theme.of(
+                context,
+              ).colorScheme.onSurfaceVariant.withValues(alpha: 0.7),
+            ),
       ),
       value: value,
       onChanged: onChanged,

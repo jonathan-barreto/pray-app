@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'package:pray_app/l10n/app_localizations.dart';
 import 'package:pray_app/app/core/widgets/card_header.dart';
 import 'package:pray_app/app/domain/entities/devotional_entity.dart';
 
@@ -25,7 +27,9 @@ class DevotionalHeader extends StatelessWidget {
       children: [
         CardHeader(
           icon: Icons.menu_book_outlined,
-          label: showLabel ? 'Devocional diário' : 'Devocional',
+          label: showLabel
+              ? AppLocalizations.of(context)!.dailyDevotional
+              : AppLocalizations.of(context)!.devotionalAppBar,
           readingTimeMinutes: devotional?.readingTimeEstimate ?? 2,
           date: devotional?.createdAt != null
               ? DateTime.tryParse(devotional!.createdAt)
@@ -36,14 +40,14 @@ class DevotionalHeader extends StatelessWidget {
         ),
         const SizedBox(height: 16),
         Text(
-          devotional?.title ?? 'Carregando...',
+          devotional?.title ?? AppLocalizations.of(context)!.loading,
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
           style: Theme.of(context).textTheme.titleLarge?.copyWith(
-            fontWeight: FontWeight.bold,
-            color: Theme.of(context).colorScheme.onSurface,
-            fontSize: 22,
-          ),
+                fontWeight: FontWeight.bold,
+                color: Theme.of(context).colorScheme.onSurface,
+                fontSize: 22,
+              ),
         ),
       ],
     );

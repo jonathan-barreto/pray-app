@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'package:pray_app/l10n/app_localizations.dart';
 import 'package:pray_app/app/core/consts/app_colors.dart';
 import 'package:pray_app/app/core/widgets/feature_in_development_dialog.dart';
 import 'package:pray_app/app/domain/entities/devotional_entity.dart';
@@ -38,7 +40,8 @@ class DevotionalQuoteSection extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    devotional?.verseReference ?? 'Citação diária',
+                    devotional?.verseReference ??
+                        AppLocalizations.of(context)!.dailyQuote,
                     style: Theme.of(context).textTheme.titleSmall?.copyWith(
                           fontWeight: FontWeight.w600,
                           color: Theme.of(context).colorScheme.onSurface,
@@ -46,7 +49,8 @@ class DevotionalQuoteSection extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    devotional?.description ?? 'Carregando descrição...',
+                    devotional?.description ??
+                        AppLocalizations.of(context)!.loadingDescription,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
@@ -66,8 +70,8 @@ class DevotionalQuoteSection extends StatelessWidget {
                 onPressed: () {
                   showDialog(
                     context: context,
-                    builder: (context) => const FeatureInDevelopmentDialog(
-                      featureName: 'Ouvir',
+                    builder: (context) => FeatureInDevelopmentDialog(
+                      featureName: AppLocalizations.of(context)!.listenFeature,
                     ),
                   );
                 },
@@ -83,7 +87,7 @@ class DevotionalQuoteSection extends StatelessWidget {
                     const Icon(Icons.headphones_outlined, size: 18),
                     const SizedBox(width: 8),
                     Text(
-                      'Ouvir',
+                      AppLocalizations.of(context)!.listenFeature,
                       style: Theme.of(context).textTheme.titleSmall?.copyWith(
                             fontWeight: FontWeight.w600,
                           ),
@@ -110,7 +114,7 @@ class DevotionalQuoteSection extends StatelessWidget {
                         size: 18, color: AppColors.primary),
                     const SizedBox(width: 8),
                     Text(
-                      'Ler',
+                      AppLocalizations.of(context)!.readAction,
                       style: Theme.of(context).textTheme.titleSmall?.copyWith(
                             fontWeight: FontWeight.w600,
                             color: AppColors.primary,

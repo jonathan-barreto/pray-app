@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+import 'package:pray_app/l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pray_app/app/core/widgets/feature_in_development_dialog.dart';
 import 'package:pray_app/app/di/di.dart';
@@ -56,12 +58,13 @@ class _PassagePageState extends State<PassagePage> {
   void _handleShare() {
     FeatureInDevelopmentDialog.show(
       context,
-      featureName: 'Compartilhar passagem',
+      featureName: AppLocalizations.of(context)!.sharePassageFeature,
     );
   }
 
   void _handleListen() {
-    FeatureInDevelopmentDialog.show(context, featureName: 'Ouvir passagem');
+    FeatureInDevelopmentDialog.show(context,
+        featureName: AppLocalizations.of(context)!.listenPassageFeature);
   }
 
   @override
@@ -69,7 +72,7 @@ class _PassagePageState extends State<PassagePage> {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: AppBar(
-        title: const Text('Passagem Bíblica'),
+        title: Text(AppLocalizations.of(context)!.passageAppBar),
         backgroundColor: Theme.of(context).colorScheme.primary,
         foregroundColor: Theme.of(context).colorScheme.onPrimary,
         surfaceTintColor: Colors.transparent,

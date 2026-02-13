@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+
+import 'package:pray_app/l10n/app_localizations.dart';
+
 import 'package:pray_app/app/core/consts/app_colors.dart';
 
 class TodayHeader extends StatelessWidget {
@@ -14,20 +17,20 @@ class TodayHeader extends StatelessWidget {
         Text(
           greeting,
           style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-            fontWeight: FontWeight.bold,
-            color: AppColors.textPrimary,
-            fontSize: 28,
-            height: 1.2,
-          ),
+                fontWeight: FontWeight.bold,
+                color: AppColors.textPrimary,
+                fontSize: 28,
+                height: 1.2,
+              ),
         ),
         const SizedBox(height: 12),
         Text(
-          'Mantenha sua chama acesa, cada dia é uma nova oportunidade de se conectar com Deus.',
+          AppLocalizations.of(context)!.todaySubtitle,
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-            color: AppColors.textSecondary,
-            fontSize: 16,
-            height: 1.6,
-          ),
+                color: AppColors.textSecondary,
+                fontSize: 16,
+                height: 1.6,
+              ),
         ),
       ],
     );

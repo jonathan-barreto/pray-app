@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
+import 'package:pray_app/l10n/app_localizations.dart';
+
 class WelcomeDescription extends StatelessWidget {
-  final String description;
+  final String? description;
 
   const WelcomeDescription({
     super.key,
-    this.description =
-        'Descubra devocionais criados especialmente para você. Reflita, ore e fortaleça sua caminhada com Deus todos os dias.',
+    this.description,
   });
 
   @override
@@ -17,7 +18,7 @@ class WelcomeDescription extends StatelessWidget {
     return Align(
       alignment: Alignment.centerLeft,
       child: Text(
-        description,
+        description ?? AppLocalizations.of(context)!.welcomeDescription,
         style: textTheme.bodyLarge?.copyWith(
           color: colorScheme.onSurfaceVariant,
         ),

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+
+import 'package:pray_app/l10n/app_localizations.dart';
+
 import 'package:pray_app/app/app_controller.dart';
 import 'package:pray_app/app/di/di.dart';
 import 'package:pray_app/app/modules/metrics/controller/metrics_page_controller.dart';
@@ -62,7 +65,7 @@ class _MetricsPageState extends State<MetricsPage> {
 
         return Scaffold(
           appBar: AppBar(
-            title: const Text('Minhas Métricas'),
+            title: Text(AppLocalizations.of(context)!.metricsAppBar),
             surfaceTintColor: Colors.transparent,
             scrolledUnderElevation: 0,
           ),
@@ -95,7 +98,7 @@ class _MetricsPageState extends State<MetricsPage> {
                           ),
                           const SizedBox(height: 32),
                           Text(
-                            'Progresso',
+                            AppLocalizations.of(context)!.metricsProgress,
                             style: Theme.of(context)
                                 .textTheme
                                 .titleLarge
@@ -104,25 +107,30 @@ class _MetricsPageState extends State<MetricsPage> {
                           const SizedBox(height: 20),
                           MetricCard(
                             icon: Icons.auto_stories_outlined,
-                            title: 'Devocionais Completos',
+                            title: AppLocalizations.of(context)!
+                                .metricsDevotionalsCompleted,
                             value: '${metrics?.devotionalsCompleted ?? 0}',
-                            subtitle: 'Total de devocionais concluídos',
+                            subtitle: AppLocalizations.of(context)!
+                                .metricsDevotionalsCompletedSubtitle,
                           ),
                           const SizedBox(height: 16),
                           MetricCard(
                             icon: Icons.menu_book_outlined,
-                            title: 'Passagens Completas',
+                            title: AppLocalizations.of(context)!
+                                .metricsPassagesCompleted,
                             value: '${metrics?.passagesCompleted ?? 0}',
-                            subtitle: 'Total de passagens concluídas',
+                            subtitle: AppLocalizations.of(context)!
+                                .metricsPassagesCompletedSubtitle,
                           ),
                           const SizedBox(height: 16),
                           MetricCard(
                             icon: Icons.emoji_events_outlined,
-                            title: 'Ranking',
+                            title: AppLocalizations.of(context)!.metricsRanking,
                             value: metrics?.rankPosition != null
                                 ? '#${metrics!.rankPosition}'
                                 : 'N/A',
-                            subtitle: 'Sua posição no ranking global',
+                            subtitle: AppLocalizations.of(context)!
+                                .metricsRankingSubtitle,
                           ),
                         ],
                       ),

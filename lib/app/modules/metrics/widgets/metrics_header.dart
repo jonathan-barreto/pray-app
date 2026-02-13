@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:pray_app/l10n/app_localizations.dart';
+
 class MetricsHeader extends StatelessWidget {
   final String userName;
   final String userInitials;
@@ -18,7 +20,10 @@ class MetricsHeader extends StatelessWidget {
           width: 80,
           height: 80,
           decoration: BoxDecoration(
-            color:  Theme.of(context).colorScheme.primaryContainer.withValues(alpha: 0.5),
+            color: Theme.of(context)
+                .colorScheme
+                .primaryContainer
+                .withValues(alpha: 0.5),
             shape: BoxShape.circle,
           ),
           child: Center(
@@ -41,7 +46,7 @@ class MetricsHeader extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         Text(
-          'Seu progresso espiritual',
+          AppLocalizations.of(context)!.metricsHeaderSubtitle,
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 color: Theme.of(context)
                     .colorScheme

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:pray_app/l10n/app_localizations.dart';
 
 class LoginHeader extends StatelessWidget {
-  final String title;
-  final String subtitle;
+  final String? title;
+  final String? subtitle;
 
   const LoginHeader({
     super.key,
-    this.title = 'Acesse o Pray!',
-    this.subtitle =
-        'Entre para viver momentos de fé e inspiração todos os dias.',
+    this.title,
+    this.subtitle,
   });
 
   @override
@@ -17,20 +17,20 @@ class LoginHeader extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          title,
+          title ?? AppLocalizations.of(context)!.loginTitle,
           style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-            color: Theme.of(context).colorScheme.onSurface,
-            fontWeight: FontWeight.w700,
-            letterSpacing: -0.5,
-          ),
+                color: Theme.of(context).colorScheme.onSurface,
+                fontWeight: FontWeight.w700,
+                letterSpacing: -0.5,
+              ),
         ),
         const SizedBox(height: 12),
         Text(
-          subtitle,
+          subtitle ?? AppLocalizations.of(context)!.loginSubtitle,
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-            color: Theme.of(context).colorScheme.onSurfaceVariant,
-            height: 1.5,
-          ),
+                color: Theme.of(context).colorScheme.onSurfaceVariant,
+                height: 1.5,
+              ),
         ),
       ],
     );

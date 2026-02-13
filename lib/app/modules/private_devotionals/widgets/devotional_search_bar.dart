@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:pray_app/l10n/app_localizations.dart';
+
 class DevotionalSearchBar extends StatefulWidget {
   final TextEditingController controller;
   final ValueChanged<String> onChanged;
@@ -59,13 +61,13 @@ class _DevotionalSearchBarState extends State<DevotionalSearchBar> {
                 controller: widget.controller,
                 onChanged: widget.onChanged,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: Theme.of(context).colorScheme.onSurface,
-                ),
+                      color: Theme.of(context).colorScheme.onSurface,
+                    ),
                 decoration: InputDecoration(
-                  hintText: 'Buscar devocionais...',
+                  hintText: AppLocalizations.of(context)!.searchDevotionalsHint,
                   hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Theme.of(context).colorScheme.onSurfaceVariant,
-                  ),
+                        color: Theme.of(context).colorScheme.onSurfaceVariant,
+                      ),
                   prefixIcon: Icon(
                     Icons.search_rounded,
                     color: Theme.of(context).colorScheme.onSurfaceVariant,

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'package:pray_app/l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pray_app/app/app_controller.dart';
 import 'package:pray_app/app/core/consts/app_colors.dart';
@@ -61,33 +63,34 @@ class DevotionalFifthPage extends StatelessWidget {
             ),
             const SizedBox(height: 24),
             Text(
-              'Parabéns, ${AppController.instance.userProfile?.getFirstName()}!',
+              AppLocalizations.of(context)!.devotionalCongrats(
+                  AppController.instance.userProfile?.getFirstName() ?? ''),
               style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                fontWeight: FontWeight.w600,
-                color: AppColors.primary,
-                letterSpacing: 0.5,
-              ),
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.primary,
+                    letterSpacing: 0.5,
+                  ),
             ),
             const SizedBox(height: 16),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8),
               child: Text(
-                'Você concluiu o devocional de hoje. Que as reflexões e ensinamentos permaneçam com você ao longo do dia.',
+                AppLocalizations.of(context)!.devotionalCompleteMessage,
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  height: 1.6,
-                  color: AppColors.textSecondary,
-                  fontSize: 16,
-                ),
+                      height: 1.6,
+                      color: AppColors.textSecondary,
+                      fontSize: 16,
+                    ),
                 textAlign: TextAlign.center,
               ),
             ),
             const SizedBox(height: 32),
             Text(
-              'Como você avalia este devocional?',
+              AppLocalizations.of(context)!.devotionalRateQuestion,
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.w500,
-                color: AppColors.textPrimary,
-              ),
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.textPrimary,
+                  ),
             ),
             const SizedBox(height: 16),
             Row(
@@ -115,7 +118,7 @@ class DevotionalFifthPage extends StatelessWidget {
                 maxLines: 3,
                 decoration: InputDecoration(
                   hintText:
-                      'Deixe um comentário sobre este devocional (opcional)',
+                      AppLocalizations.of(context)!.devotionalFeedbackHint,
                   hintStyle: const TextStyle(
                     color: AppColors.textMuted,
                     fontSize: 14,
@@ -138,7 +141,9 @@ class DevotionalFifthPage extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: AppButton(
-                label: isLoading ? 'Enviando...' : 'Avaliar',
+                label: isLoading
+                    ? AppLocalizations.of(context)!.devotionalSubmitting
+                    : AppLocalizations.of(context)!.devotionalSubmitButton,
                 onPressed: isLoading ? () {} : onSubmitFeedback,
                 expand: true,
                 icon: isLoading
@@ -161,11 +166,11 @@ class DevotionalFifthPage extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  'Voltar ao início',
+                  AppLocalizations.of(context)!.devotionalBackHome,
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    color: AppColors.primary,
-                    fontWeight: FontWeight.w500,
-                  ),
+                        color: AppColors.primary,
+                        fontWeight: FontWeight.w500,
+                      ),
                 ),
               ),
             ),

@@ -1,15 +1,16 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:pray_app/l10n/app_localizations.dart';
 
 class LoginSignupPrompt extends StatelessWidget {
-  final String questionText;
-  final String actionText;
+  final String? questionText;
+  final String? actionText;
   final VoidCallback onTap;
 
   const LoginSignupPrompt({
     super.key,
-    this.questionText = 'Não tem uma conta? ',
-    this.actionText = 'Crie agora',
+    this.questionText,
+    this.actionText,
     required this.onTap,
   });
 
@@ -22,9 +23,11 @@ class LoginSignupPrompt extends StatelessWidget {
                 color: Theme.of(context).colorScheme.onSurfaceVariant,
               ),
           children: [
-            TextSpan(text: questionText),
             TextSpan(
-              text: actionText,
+                text: questionText ??
+                    AppLocalizations.of(context)!.loginNoAccount),
+            TextSpan(
+              text: actionText ?? AppLocalizations.of(context)!.loginSignUp,
               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                     color: Theme.of(context).colorScheme.primary,
                     fontWeight: FontWeight.w600,

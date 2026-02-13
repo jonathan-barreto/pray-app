@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'package:pray_app/l10n/app_localizations.dart';
 import 'package:pray_app/app/core/consts/app_assets.dart';
 
 class WelcomeIllustration extends StatelessWidget {
@@ -10,7 +12,7 @@ class WelcomeIllustration extends StatelessWidget {
       child: Image.asset(
         AppAssets.prayLogo,
         fit: BoxFit.contain,
-        semanticLabel: 'Logo da Pray',
+        semanticLabel: AppLocalizations.of(context)!.logoSemanticLabel,
       ),
     );
   }

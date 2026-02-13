@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:pray_app/l10n/app_localizations.dart';
+
 class FeatureInDevelopmentDialog extends StatelessWidget {
   /// Método estático para exibir o diálogo
   static Future<void> show(
@@ -44,7 +46,7 @@ class FeatureInDevelopmentDialog extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             Text(
-              'Em Desenvolvimento',
+              AppLocalizations.of(context)!.featureInDevTitle,
               style: Theme.of(
                 context,
               ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
@@ -52,12 +54,12 @@ class FeatureInDevelopmentDialog extends StatelessWidget {
             ),
             const SizedBox(height: 12),
             Text(
-              'A funcionalidade "$featureName" está sendo desenvolvida e estará disponível em breve.',
+              AppLocalizations.of(context)!.featureInDevMessage(featureName),
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: Theme.of(
-                  context,
-                ).colorScheme.onSurfaceVariant.withValues(alpha: 0.8),
-              ),
+                    color: Theme.of(
+                      context,
+                    ).colorScheme.onSurfaceVariant.withValues(alpha: 0.8),
+                  ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 24),
@@ -72,11 +74,11 @@ class FeatureInDevelopmentDialog extends StatelessWidget {
                   ),
                 ),
                 child: Text(
-                  'Entendi',
+                  AppLocalizations.of(context)!.featureInDevButton,
                   style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                    fontWeight: FontWeight.w600,
-                    color: Theme.of(context).colorScheme.onPrimary,
-                  ),
+                        fontWeight: FontWeight.w600,
+                        color: Theme.of(context).colorScheme.onPrimary,
+                      ),
                 ),
               ),
             ),

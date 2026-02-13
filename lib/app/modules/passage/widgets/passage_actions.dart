@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:pray_app/l10n/app_localizations.dart';
+
 class PassageActions extends StatelessWidget {
   final VoidCallback onShare;
   final VoidCallback onListen;
@@ -19,7 +21,7 @@ class PassageActions extends StatelessWidget {
           Expanded(
             child: _ActionButton(
               icon: Icons.headphones_outlined,
-              label: 'Ouvir',
+              label: AppLocalizations.of(context)!.passageListen,
               onTap: onListen,
               isPrimary: false,
             ),
@@ -28,7 +30,7 @@ class PassageActions extends StatelessWidget {
           Expanded(
             child: _ActionButton(
               icon: Icons.share_outlined,
-              label: 'Compartilhar',
+              label: AppLocalizations.of(context)!.passageShare,
               onTap: onShare,
               isPrimary: true,
             ),
@@ -86,11 +88,11 @@ class _ActionButton extends StatelessWidget {
             Text(
               label,
               style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                color: isPrimary
-                    ? Theme.of(context).colorScheme.onPrimary
-                    : Theme.of(context).colorScheme.onSurface,
-                fontWeight: FontWeight.w600,
-              ),
+                    color: isPrimary
+                        ? Theme.of(context).colorScheme.onPrimary
+                        : Theme.of(context).colorScheme.onSurface,
+                    fontWeight: FontWeight.w600,
+                  ),
             ),
           ],
         ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:go_router/go_router.dart';
+import 'package:pray_app/l10n/app_localizations.dart';
 import 'package:pray_app/app/core/routes/app_router.dart';
 import 'package:pray_app/app/core/widgets/devotional_card.dart';
 import 'package:pray_app/app/domain/entities/devotional_entity.dart';
@@ -40,7 +42,7 @@ class DevotionalCardWithAction extends StatelessWidget {
               ),
             ),
             child: Text(
-              'Ver Histórico',
+              AppLocalizations.of(context)!.viewHistory,
               style: Theme.of(context).textTheme.labelLarge?.copyWith(
                     color: Theme.of(context).colorScheme.primary,
                     fontWeight: FontWeight.w600,

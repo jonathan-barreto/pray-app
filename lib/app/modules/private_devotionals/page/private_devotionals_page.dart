@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:go_router/go_router.dart';
+import 'package:pray_app/l10n/app_localizations.dart';
 import 'package:pray_app/app/core/routes/app_router.dart';
 import 'package:pray_app/app/di/di.dart';
 import 'package:pray_app/app/modules/private_devotionals/controller/private_devotionals_page_controller.dart';
@@ -87,7 +89,8 @@ class _PrivateDevotionalsPageState extends State<PrivateDevotionalsPage> {
     ScaffoldMessenger.of(context)
       ..clearSnackBars()
       ..showSnackBar(
-        const SnackBar(content: Text('Filtros em desenvolvimento')),
+        SnackBar(
+            content: Text(AppLocalizations.of(context)!.filtersInDevelopment)),
       );
   }
 
@@ -115,11 +118,11 @@ class _PrivateDevotionalsPageState extends State<PrivateDevotionalsPage> {
           onPressed: () => GoRouter.of(context).pop(),
         ),
         title: Text(
-          'Meus Devocionais',
+          AppLocalizations.of(context)!.privateDevotionalsAppBar,
           style: Theme.of(context).textTheme.titleLarge?.copyWith(
-            fontWeight: FontWeight.bold,
-            color: Theme.of(context).colorScheme.onSurface,
-          ),
+                fontWeight: FontWeight.bold,
+                color: Theme.of(context).colorScheme.onSurface,
+              ),
         ),
       ),
       body: ListenableBuilder(
@@ -150,14 +153,14 @@ class _PrivateDevotionalsPageState extends State<PrivateDevotionalsPage> {
                     Text(
                       _controller.errorMessage!,
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        color: Theme.of(context).colorScheme.onSurface,
-                      ),
+                            color: Theme.of(context).colorScheme.onSurface,
+                          ),
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 24),
                     FilledButton(
                       onPressed: _retryLoad,
-                      child: const Text('Tentar Novamente'),
+                      child: Text(AppLocalizations.of(context)!.retryButton),
                     ),
                   ],
                 ),
@@ -179,18 +182,20 @@ class _PrivateDevotionalsPageState extends State<PrivateDevotionalsPage> {
                     ),
                     const SizedBox(height: 16),
                     Text(
-                      'Nenhum devocional encontrado',
+                      AppLocalizations.of(context)!.privateDevotionalsEmpty,
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.w600,
-                        color: Theme.of(context).colorScheme.onSurface,
-                      ),
+                            fontWeight: FontWeight.w600,
+                            color: Theme.of(context).colorScheme.onSurface,
+                          ),
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      'Gere seu primeiro devocional personalizado',
+                      AppLocalizations.of(context)!
+                          .privateDevotionalsEmptyDescription,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: Theme.of(context).colorScheme.onSurfaceVariant,
-                      ),
+                            color:
+                                Theme.of(context).colorScheme.onSurfaceVariant,
+                          ),
                     ),
                   ],
                 ),
@@ -224,8 +229,10 @@ class _PrivateDevotionalsPageState extends State<PrivateDevotionalsPage> {
                           ),
                           const SizedBox(height: 16),
                           Text(
-                            'Nenhum resultado encontrado',
-                            style: Theme.of(context).textTheme.titleMedium
+                            AppLocalizations.of(context)!.searchNoResults,
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleMedium
                                 ?.copyWith(
                                   fontWeight: FontWeight.w600,
                                   color: Theme.of(
@@ -236,8 +243,10 @@ class _PrivateDevotionalsPageState extends State<PrivateDevotionalsPage> {
                           ),
                           const SizedBox(height: 8),
                           Text(
-                            'Tente buscar por outro termo',
-                            style: Theme.of(context).textTheme.bodyMedium
+                            AppLocalizations.of(context)!.searchTryAnother,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium
                                 ?.copyWith(
                                   color: Theme.of(
                                     context,
@@ -254,8 +263,7 @@ class _PrivateDevotionalsPageState extends State<PrivateDevotionalsPage> {
                 Expanded(
                   child: ListView.builder(
                     controller: _scrollController,
-                    itemCount:
-                        _controller.filteredDevotionals.length +
+                    itemCount: _controller.filteredDevotionals.length +
                         (_controller.isLoadingMore ? 1 : 0),
                     itemBuilder: (context, index) {
                       if (index == _controller.filteredDevotionals.length) {

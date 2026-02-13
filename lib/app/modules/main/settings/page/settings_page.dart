@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'package:pray_app/l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pray_app/app/app_controller.dart';
 import 'package:pray_app/app/core/routes/app_router.dart';
@@ -64,7 +66,8 @@ class _SettingsPageState extends State<SettingsPage> {
         ..clearSnackBars()
         ..showSnackBar(
           SnackBar(
-            content: Text('Erro ao fazer logout: ${_controller.errorMessage}'),
+            content: Text(AppLocalizations.of(context)!
+                .settingsLogoutError(_controller.errorMessage!)),
             backgroundColor: Theme.of(context).colorScheme.error,
           ),
         );
@@ -116,12 +119,14 @@ class _SettingsPageState extends State<SettingsPage> {
                 child: Column(
                   children: [
                     SettingsSection(
-                      title: 'Conta',
+                      title:
+                          AppLocalizations.of(context)!.settingsAccountSection,
                       items: [
                         SettingsTile(
                           icon: Icons.person_outline,
-                          title: 'Perfil',
-                          subtitle: 'Editar informações pessoais',
+                          title: AppLocalizations.of(context)!.settingsProfile,
+                          subtitle: AppLocalizations.of(context)!
+                              .settingsProfileSubtitle,
                           onTap: () {
                             GoRouter.of(
                               context,
@@ -130,16 +135,18 @@ class _SettingsPageState extends State<SettingsPage> {
                         ),
                         SettingsTile(
                           icon: Icons.email_outlined,
-                          title: 'E-mail',
-                          subtitle: 'Editar e-mail',
+                          title: AppLocalizations.of(context)!.settingsEmail,
+                          subtitle: AppLocalizations.of(context)!
+                              .settingsEmailSubtitle,
                           onTap: () {
                             GoRouter.of(context).pushNamed(AppRoutes.emailName);
                           },
                         ),
                         SettingsTile(
                           icon: Icons.lock_outlined,
-                          title: 'Senha',
-                          subtitle: 'Editar senha',
+                          title: AppLocalizations.of(context)!.settingsPassword,
+                          subtitle: AppLocalizations.of(context)!
+                              .settingsPasswordSubtitle,
                           onTap: () {
                             GoRouter.of(
                               context,
@@ -160,13 +167,15 @@ class _SettingsPageState extends State<SettingsPage> {
                       ],
                     ),
                     SettingsSection(
-                      title: 'Favoritos',
+                      title: AppLocalizations.of(context)!
+                          .settingsFavoritesSection,
                       items: [
                         SettingsTile(
                           icon: Icons.auto_stories_outlined,
-                          title: 'Devocionais Diários Favoritos',
-                          subtitle:
-                              'Ver e gerenciar devocionais diários favoritos',
+                          title: AppLocalizations.of(context)!
+                              .settingsDailyDevotionals,
+                          subtitle: AppLocalizations.of(context)!
+                              .settingsDailyDevotionalsSubtitle,
                           onTap: () {
                             GoRouter.of(
                               context,
@@ -175,9 +184,10 @@ class _SettingsPageState extends State<SettingsPage> {
                         ),
                         SettingsTile(
                           icon: Icons.menu_book_outlined,
-                          title: 'Passagens Diárias Favoritas',
-                          subtitle:
-                              'Ver e gerenciar passagens diárias favoritas',
+                          title: AppLocalizations.of(context)!
+                              .settingsDailyPassages,
+                          subtitle: AppLocalizations.of(context)!
+                              .settingsDailyPassagesSubtitle,
                           onTap: () {
                             GoRouter.of(
                               context,
@@ -187,28 +197,32 @@ class _SettingsPageState extends State<SettingsPage> {
                       ],
                     ),
                     SettingsSection(
-                      title: 'Suporte',
+                      title:
+                          AppLocalizations.of(context)!.settingsSupportSection,
                       items: [
                         SettingsTile(
                           icon: Icons.help_outline,
-                          title: 'Ajuda',
-                          subtitle: 'Central de ajuda e FAQ',
+                          title: AppLocalizations.of(context)!.settingsHelp,
+                          subtitle: AppLocalizations.of(context)!
+                              .settingsHelpSubtitle,
                           onTap: () {
                             GoRouter.of(context).pushNamed(AppRoutes.helpName);
                           },
                         ),
                         SettingsTile(
                           icon: Icons.info_outline,
-                          title: 'Sobre',
-                          subtitle: 'Versão e informações do app',
+                          title: AppLocalizations.of(context)!.settingsAbout,
+                          subtitle: AppLocalizations.of(context)!
+                              .settingsAboutSubtitle,
                           onTap: () {
                             GoRouter.of(context).pushNamed(AppRoutes.aboutName);
                           },
                         ),
                         SettingsTile(
                           icon: Icons.privacy_tip_outlined,
-                          title: 'Privacidade',
-                          subtitle: 'Política de privacidade',
+                          title: AppLocalizations.of(context)!.settingsPrivacy,
+                          subtitle: AppLocalizations.of(context)!
+                              .settingsPrivacySubtitle,
                           onTap: () {
                             GoRouter.of(
                               context,
@@ -217,8 +231,9 @@ class _SettingsPageState extends State<SettingsPage> {
                         ),
                         SettingsTile(
                           icon: Icons.description_outlined,
-                          title: 'Termos de Uso',
-                          subtitle: 'Termos e condições',
+                          title: AppLocalizations.of(context)!.settingsTerms,
+                          subtitle: AppLocalizations.of(context)!
+                              .settingsTermsSubtitle,
                           onTap: () {
                             GoRouter.of(context).pushNamed(AppRoutes.termsName);
                           },
@@ -226,16 +241,17 @@ class _SettingsPageState extends State<SettingsPage> {
                       ],
                     ),
                     SettingsSection(
-                      title: 'Sessão',
+                      title:
+                          AppLocalizations.of(context)!.settingsSessionSection,
                       isLast: true,
                       items: [
                         SettingsTile(
                           icon: Icons.logout,
-                          title: 'Sair',
-                          subtitle: 'Desconectar da conta',
-                          onTap: _controller.isLoggingOut
-                              ? null
-                              : _handleLogout,
+                          title: AppLocalizations.of(context)!.settingsLogout,
+                          subtitle: AppLocalizations.of(context)!
+                              .settingsLogoutSubtitle,
+                          onTap:
+                              _controller.isLoggingOut ? null : _handleLogout,
                           isDestructive: true,
                           trailing: _controller.isLoggingOut
                               ? SizedBox(

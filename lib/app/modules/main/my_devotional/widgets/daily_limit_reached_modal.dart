@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'package:pray_app/l10n/app_localizations.dart';
 import 'package:pray_app/app/core/consts/app_colors.dart';
 
 class DailyLimitReachedModal extends StatelessWidget {
@@ -31,22 +33,22 @@ class DailyLimitReachedModal extends StatelessWidget {
             ),
             const SizedBox(height: 24),
             Text(
-              'Limite Diário Atingido',
+              AppLocalizations.of(context)!.dailyLimitTitle,
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                fontWeight: FontWeight.bold,
-                color: AppColors.textPrimary,
-                fontSize: 22,
-              ),
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.textPrimary,
+                    fontSize: 22,
+                  ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 12),
             Text(
-              'Você já criou um devocional personalizado hoje. Volte amanhã para criar um novo!',
+              AppLocalizations.of(context)!.dailyLimitMessage,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: AppColors.textSecondary,
-                fontSize: 15,
-                height: 1.5,
-              ),
+                    color: AppColors.textSecondary,
+                    fontSize: 15,
+                    height: 1.5,
+                  ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 24),
@@ -62,9 +64,10 @@ class DailyLimitReachedModal extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                   ),
                 ),
-                child: const Text(
-                  'Entendi',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                child: Text(
+                  AppLocalizations.of(context)!.dailyLimitButton,
+                  style: const TextStyle(
+                      fontSize: 16, fontWeight: FontWeight.w600),
                 ),
               ),
             ),

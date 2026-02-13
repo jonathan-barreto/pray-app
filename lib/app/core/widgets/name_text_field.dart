@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pray_app/l10n/app_localizations.dart';
 
 class NameTextField extends StatelessWidget {
   final TextEditingController? controller;
@@ -30,7 +31,8 @@ class NameTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     final effectiveDecoration =
         (decoration ?? const InputDecoration()).copyWith(
-      labelText: decoration?.labelText ?? 'Nome',
+      labelText:
+          decoration?.labelText ?? AppLocalizations.of(context)!.nameLabel,
       prefixIcon: decoration?.prefixIcon ??
           Icon(
             Icons.person_outline,
