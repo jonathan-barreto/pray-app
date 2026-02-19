@@ -23,7 +23,8 @@ class DevotionalHeader extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    DateFormatter.formatDate(devotional?.createdAt),
+                    DateFormatter.formatDate(
+                        devotional?.createdAt, AppLocalizations.of(context)!),
                     style: Theme.of(context).textTheme.labelSmall?.copyWith(
                           letterSpacing: 1.3,
                           fontWeight: FontWeight.w600,

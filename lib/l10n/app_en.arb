@@ -358,5 +358,12 @@
 
   "devotionalLabel": "Devotional",
   "noDevotionalsYet": "No devotionals yet",
-  "seeMoreDevotionals": "See More Devotionals"
+  "seeMoreDevotionals": "See More Devotionals",
+
+  "tabToday": "Today",
+  "tabMyDevotional": "My Devotional",
+  "tabCommunity": "Community",
+  "tabSettings": "Settings",
+
+  "dateFormatterToday": "TODAY"
 }

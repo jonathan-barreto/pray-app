@@ -995,4 +995,19 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get seeMoreDevotionals => 'Ver Mais Devocionais';
+
+  @override
+  String get tabToday => 'Hoje';
+
+  @override
+  String get tabMyDevotional => 'Meu Devocional';
+
+  @override
+  String get tabCommunity => 'Comunidade';
+
+  @override
+  String get tabSettings => 'Configurações';
+
+  @override
+  String get dateFormatterToday => 'HOJE';
 }

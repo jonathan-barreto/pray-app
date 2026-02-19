@@ -11,12 +11,22 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late final HomePageController _controller;
+  bool _tabsInitialized = false;
 
   @override
   void initState() {
     super.initState();
     _controller = getIt<HomePageController>();
     _loadData();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (!_tabsInitialized) {
+      _controller.initializeTabs(context);
+      _tabsInitialized = true;
+    }
   }
 
   Future<void> _loadData() async {

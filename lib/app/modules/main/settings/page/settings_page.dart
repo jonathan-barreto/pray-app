@@ -209,15 +209,15 @@ class _SettingsPageState extends State<SettingsPage> {
                             GoRouter.of(context).pushNamed(AppRoutes.helpName);
                           },
                         ),
-                        SettingsTile(
-                          icon: Icons.info_outline,
-                          title: AppLocalizations.of(context)!.settingsAbout,
-                          subtitle: AppLocalizations.of(context)!
-                              .settingsAboutSubtitle,
-                          onTap: () {
-                            GoRouter.of(context).pushNamed(AppRoutes.aboutName);
-                          },
-                        ),
+                        // SettingsTile(
+                        //   icon: Icons.info_outline,
+                        //   title: AppLocalizations.of(context)!.settingsAbout,
+                        //   subtitle: AppLocalizations.of(context)!
+                        //       .settingsAboutSubtitle,
+                        //   onTap: () {
+                        //     GoRouter.of(context).pushNamed(AppRoutes.aboutName);
+                        //   },
+                        // ),
                         SettingsTile(
                           icon: Icons.privacy_tip_outlined,
                           title: AppLocalizations.of(context)!.settingsPrivacy,

@@ -1891,6 +1891,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'See More Devotionals'**
   String get seeMoreDevotionals;
+
+  /// No description provided for @tabToday.
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get tabToday;
+
+  /// No description provided for @tabMyDevotional.
+  ///
+  /// In en, this message translates to:
+  /// **'My Devotional'**
+  String get tabMyDevotional;
+
+  /// No description provided for @tabCommunity.
+  ///
+  /// In en, this message translates to:
+  /// **'Community'**
+  String get tabCommunity;
+
+  /// No description provided for @tabSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get tabSettings;
+
+  /// No description provided for @dateFormatterToday.
+  ///
+  /// In en, this message translates to:
+  /// **'TODAY'**
+  String get dateFormatterToday;
 }
 
 class _AppLocalizationsDelegate

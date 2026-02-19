@@ -35,7 +35,8 @@ class CardHeader extends StatelessWidget {
             children: [
               if (date != null) ...[
                 Text(
-                  DateFormatter.formatDate(date!.toIso8601String()),
+                  DateFormatter.formatDate(
+                      date!.toIso8601String(), AppLocalizations.of(context)!),
                   style: Theme.of(context).textTheme.labelSmall?.copyWith(
                         letterSpacing: 1.3,
                         fontWeight: FontWeight.w600,

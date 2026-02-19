@@ -990,4 +990,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get seeMoreDevotionals => 'See More Devotionals';
+
+  @override
+  String get tabToday => 'Today';
+
+  @override
+  String get tabMyDevotional => 'My Devotional';
+
+  @override
+  String get tabCommunity => 'Community';
+
+  @override
+  String get tabSettings => 'Settings';
+
+  @override
+  String get dateFormatterToday => 'TODAY';
 }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'package:pray_app/l10n/app_localizations.dart';
 import 'package:pray_app/app/core/consts/app_assets.dart';
 import 'package:pray_app/app/core/usecase/usecase.dart';
 import 'package:pray_app/app/domain/entities/calendar_day_entity.dart';
@@ -15,7 +17,7 @@ class HomePageController extends ChangeNotifier {
   final GetDashboardUsecase _getDashboardUsecase;
 
   HomePageController({required GetDashboardUsecase getDashboardUsecase})
-    : _getDashboardUsecase = getDashboardUsecase;
+      : _getDashboardUsecase = getDashboardUsecase;
 
   final List<Widget> pages = [
     const TodayPage(),
@@ -24,12 +26,24 @@ class HomePageController extends ChangeNotifier {
     const SettingsPage(),
   ];
 
-  final List<HomeTabEntity> tabs = [
-    HomeTabEntity(assetPath: AppAssets.today, label: 'Hoje'),
-    HomeTabEntity(assetPath: AppAssets.book, label: 'Meu Devocional'),
-    HomeTabEntity(assetPath: AppAssets.community, label: 'Comunidade'),
-    HomeTabEntity(assetPath: AppAssets.settings, label: 'Configurações'),
-  ];
+  late List<HomeTabEntity> tabs;
+
+  void initializeTabs(BuildContext context) {
+    tabs = [
+      HomeTabEntity(
+          assetPath: AppAssets.today,
+          label: AppLocalizations.of(context)!.tabToday),
+      HomeTabEntity(
+          assetPath: AppAssets.book,
+          label: AppLocalizations.of(context)!.tabMyDevotional),
+      HomeTabEntity(
+          assetPath: AppAssets.community,
+          label: AppLocalizations.of(context)!.tabCommunity),
+      HomeTabEntity(
+          assetPath: AppAssets.settings,
+          label: AppLocalizations.of(context)!.tabSettings),
+    ];
+  }
 
   bool isLoading = false;
   List<CalendarDayEntity> calendar = [];
