@@ -12,7 +12,7 @@ class HttpClientImpl implements HttpClient {
   /// [dio] - Dio instance to use for HTTP requests
   /// [useTokenInterceptor] - Whether to use the token interceptor
   HttpClientImpl({required Dio dio, bool useTokenInterceptor = false})
-    : _dio = dio {
+      : _dio = dio {
     // Add token interceptor FIRST if enabled (so it runs before logging)
     if (useTokenInterceptor) {
       _dio.interceptors.add(TokenInterceptor());
@@ -33,9 +33,15 @@ class HttpClientImpl implements HttpClient {
   }
 
   @override
-  Future<HttpResponse> get({required String endpoint}) async {
+  Future<HttpResponse> get({
+    required String endpoint,
+    Map<String, dynamic>? queryParameters,
+  }) async {
     try {
-      final Response response = await _dio.get(endpoint);
+      final Response response = await _dio.get(
+        endpoint,
+        queryParameters: queryParameters,
+      );
 
       return HttpResponse(
         data: response.data,

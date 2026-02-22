@@ -1,7 +1,10 @@
 /// Abstract class defining HTTP client operations
 abstract class HttpClient {
   /// Performs a GET request to the specified endpoint
-  Future<HttpResponse> get({required String endpoint});
+  Future<HttpResponse> get({
+    required String endpoint,
+    Map<String, dynamic>? queryParameters,
+  });
 
   /// Performs a POST request to the specified endpoint with the given body
   Future<HttpResponse> post({
@@ -20,7 +23,7 @@ abstract class HttpClient {
     required String endpoint,
     required dynamic body,
   });
-  
+
   /// Performs a DELETE request to the specified endpoint
   Future<HttpResponse> delete({
     required String endpoint,
@@ -32,10 +35,10 @@ abstract class HttpClient {
 class HttpResponse {
   /// Response data
   final dynamic data;
-  
+
   /// HTTP status code
   final int? statusCode;
-  
+
   /// HTTP status message
   final String? statusMessage;
 
@@ -44,7 +47,7 @@ class HttpResponse {
     this.statusCode,
     this.statusMessage,
   });
-  
+
   @override
   String toString() {
     return 'HttpResponse: {statusCode: $statusCode, statusMessage: $statusMessage}';
