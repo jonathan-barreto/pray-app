@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'package:pray_app/app/app_controller.dart';
 import 'package:pray_app/l10n/app_localizations.dart';
 
 class LanguagePage extends StatefulWidget {
@@ -9,13 +11,21 @@ class LanguagePage extends StatefulWidget {
 }
 
 class _LanguagePageState extends State<LanguagePage> {
-  String _selectedLanguage = 'pt_BR';
+  String _selectedLanguage = 'pt';
 
   final List<Map<String, String>> _languages = [
-    {'code': 'pt_BR', 'name': 'Português (Brasil)', 'flag': '🇧🇷'},
-    {'code': 'en_US', 'name': 'English (US)', 'flag': '🇺🇸'},
-    {'code': 'es_ES', 'name': 'Español', 'flag': '🇪🇸'},
+    {'code': 'pt', 'name': 'Português (Brasil)', 'flag': '🇧🇷'},
+    {'code': 'en', 'name': 'English (US)', 'flag': '🇺🇸'},
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    final currentLocale = AppController.instance.locale;
+    if (currentLocale != null) {
+      _selectedLanguage = currentLocale.languageCode;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,11 +82,28 @@ class _LanguagePageState extends State<LanguagePage> {
               child: RadioListTile<String>(
                 value: language['code']!,
                 groupValue: _selectedLanguage,
-                onChanged: (String? newValue) {
+                onChanged: (String? newValue) async {
                   if (newValue != null) {
                     setState(() {
                       _selectedLanguage = newValue;
                     });
+
+                    await AppController.instance.setLocale(Locale(newValue));
+
+                    if (!mounted) {
+                      return;
+                    }
+
+                    ScaffoldMessenger.of(context)
+                      ..clearSnackBars()
+                      ..showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            AppLocalizations.of(context)!.languageChanged,
+                          ),
+                          duration: const Duration(seconds: 2),
+                        ),
+                      );
                   }
                 },
                 title: Row(

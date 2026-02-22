@@ -68,6 +68,8 @@
   "settingsEmailSubtitle": "Edit email",
   "settingsPassword": "Password",
   "settingsPasswordSubtitle": "Edit password",
+  "settingsLanguage": "Language",
+  "settingsLanguageSubtitle": "Change app language",
 
   "settingsFavoritesSection": "Favorites",
   "settingsDailyDevotionals": "Favorite Daily Devotionals",
@@ -140,6 +142,9 @@
 
   "languageAppBar": "Language",
   "languageDescription": "Select the app language. Changes will be applied immediately.",
+  "languagePortuguese": "Português",
+  "languageEnglish": "English",
+  "languageChanged": "Language changed successfully",
 
   "notificationsAppBar": "Notifications",
   "notificationsDescription": "Customize your notifications so you don't miss any important content.",

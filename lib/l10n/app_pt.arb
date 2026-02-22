@@ -63,6 +63,8 @@
   "settingsEmailSubtitle": "Editar e-mail",
   "settingsPassword": "Senha",
   "settingsPasswordSubtitle": "Editar senha",
+  "settingsLanguage": "Idioma",
+  "settingsLanguageSubtitle": "Alterar idioma do aplicativo",
 
   "settingsFavoritesSection": "Favoritos",
   "settingsDailyDevotionals": "Devocionais Diários Favoritos",
@@ -134,6 +136,9 @@
 
   "languageAppBar": "Idioma",
   "languageDescription": "Selecione o idioma do aplicativo. As alterações serão aplicadas imediatamente.",
+  "languagePortuguese": "Português",
+  "languageEnglish": "English",
+  "languageChanged": "Idioma alterado com sucesso",
 
   "notificationsAppBar": "Notificações",
   "notificationsDescription": "Personalize suas notificações para não perder nenhum conteúdo importante.",

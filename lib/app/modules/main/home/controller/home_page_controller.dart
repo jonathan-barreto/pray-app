@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:pray_app/l10n/app_localizations.dart';
+import 'package:pray_app/app/app_controller.dart';
 import 'package:pray_app/app/core/consts/app_assets.dart';
 import 'package:pray_app/app/core/usecase/usecase.dart';
 import 'package:pray_app/app/domain/entities/calendar_day_entity.dart';
@@ -12,12 +12,15 @@ import 'package:pray_app/app/modules/main/community/page/community_page.dart';
 import 'package:pray_app/app/modules/main/my_devotional/page/my_devotional_page.dart';
 import 'package:pray_app/app/modules/main/settings/page/settings_page.dart';
 import 'package:pray_app/app/modules/main/today/page/today_page.dart';
+import 'package:pray_app/l10n/app_localizations.dart';
 
 class HomePageController extends ChangeNotifier {
   final GetDashboardUsecase _getDashboardUsecase;
 
   HomePageController({required GetDashboardUsecase getDashboardUsecase})
-      : _getDashboardUsecase = getDashboardUsecase;
+      : _getDashboardUsecase = getDashboardUsecase {
+    AppController.instance.addListener(_onLocaleChanged);
+  }
 
   final List<Widget> pages = [
     const TodayPage(),
@@ -26,10 +29,15 @@ class HomePageController extends ChangeNotifier {
     const SettingsPage(),
   ];
 
-  late List<HomeTabEntity> tabs;
+  List<HomeTabEntity> _tabs = [];
+  List<HomeTabEntity> get tabs => _tabs;
+
+  void _onLocaleChanged() {
+    notifyListeners();
+  }
 
   void initializeTabs(BuildContext context) {
-    tabs = [
+    _tabs = [
       HomeTabEntity(
           assetPath: AppAssets.today,
           label: AppLocalizations.of(context)!.tabToday),
@@ -94,5 +102,11 @@ class HomePageController extends ChangeNotifier {
 
   void clearError() {
     _setError(null);
+  }
+
+  @override
+  void dispose() {
+    AppController.instance.removeListener(_onLocaleChanged);
+    super.dispose();
   }
 }

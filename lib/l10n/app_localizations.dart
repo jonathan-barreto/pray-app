@@ -416,6 +416,18 @@ abstract class AppLocalizations {
   /// **'Edit password'**
   String get settingsPasswordSubtitle;
 
+  /// No description provided for @settingsLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get settingsLanguage;
+
+  /// No description provided for @settingsLanguageSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Change app language'**
+  String get settingsLanguageSubtitle;
+
   /// No description provided for @settingsFavoritesSection.
   ///
   /// In en, this message translates to:
@@ -787,6 +799,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Select the app language. Changes will be applied immediately.'**
   String get languageDescription;
+
+  /// No description provided for @languagePortuguese.
+  ///
+  /// In en, this message translates to:
+  /// **'Português'**
+  String get languagePortuguese;
+
+  /// No description provided for @languageEnglish.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get languageEnglish;
+
+  /// No description provided for @languageChanged.
+  ///
+  /// In en, this message translates to:
+  /// **'Language changed successfully'**
+  String get languageChanged;
 
   /// No description provided for @notificationsAppBar.
   ///

@@ -182,6 +182,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settingsPasswordSubtitle => 'Edit password';
 
   @override
+  String get settingsLanguage => 'Language';
+
+  @override
+  String get settingsLanguageSubtitle => 'Change app language';
+
+  @override
   String get settingsFavoritesSection => 'Favorites';
 
   @override
@@ -383,6 +389,15 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get languageDescription =>
       'Select the app language. Changes will be applied immediately.';
+
+  @override
+  String get languagePortuguese => 'Português';
+
+  @override
+  String get languageEnglish => 'English';
+
+  @override
+  String get languageChanged => 'Language changed successfully';
 
   @override
   String get notificationsAppBar => 'Notifications';

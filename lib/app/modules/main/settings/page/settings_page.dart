@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 
-import 'package:pray_app/l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
+
 import 'package:pray_app/app/app_controller.dart';
 import 'package:pray_app/app/core/routes/app_router.dart';
 import 'package:pray_app/app/di/di.dart';
 import 'package:pray_app/app/modules/main/home/controller/home_page_controller.dart';
 import 'package:pray_app/app/modules/main/settings/controller/settings_page_controller.dart';
+import 'package:pray_app/app/modules/main/settings/widgets/language_dialog.dart';
 import 'package:pray_app/app/modules/main/settings/widgets/logout_dialog.dart';
 import 'package:pray_app/app/modules/main/settings/widgets/settings_section.dart';
 import 'package:pray_app/app/modules/main/settings/widgets/settings_tile.dart';
 import 'package:pray_app/app/modules/main/settings/widgets/user_profile_card.dart';
+import 'package:pray_app/l10n/app_localizations.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -153,17 +155,15 @@ class _SettingsPageState extends State<SettingsPage> {
                             ).pushNamed(AppRoutes.passwordName);
                           },
                         ),
-                        // SettingsTile(
-                        //   icon: Icons.notifications_outlined,
-                        //   title: 'Notificações',
-                        //   subtitle: 'Gerenciar preferências de notificação',
-                        //   onTap: () {
-                        //     FeatureInDevelopmentDialog.show(
-                        //       context,
-                        //       featureName: 'Notificações',
-                        //     );
-                        //   },
-                        // ),
+                        SettingsTile(
+                          icon: Icons.language_outlined,
+                          title: AppLocalizations.of(context)!.settingsLanguage,
+                          subtitle: AppLocalizations.of(context)!
+                              .settingsLanguageSubtitle,
+                          onTap: () {
+                            LanguageDialog.show(context);
+                          },
+                        ),
                       ],
                     ),
                     SettingsSection(

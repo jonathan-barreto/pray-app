@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
+import 'package:pray_app/app/app_controller.dart';
 import 'package:pray_app/app/core/consts/app_endpoints.dart';
 import 'package:pray_app/app/core/http_client/http_client.dart';
 import 'package:pray_app/app/core/http_client/http_client_impl.dart';
@@ -8,6 +9,7 @@ import 'package:pray_app/app/core/secure_storage/secure_storage.dart';
 import 'package:pray_app/app/core/secure_storage/secure_storage_impl.dart';
 import 'package:pray_app/app/data/datasources/dashboard_datasource.dart';
 import 'package:pray_app/app/data/datasources/devotional_datasource.dart';
+import 'package:pray_app/app/data/datasources/locale_datasource.dart';
 import 'package:pray_app/app/data/datasources/passage_datasource.dart';
 import 'package:pray_app/app/data/datasources/password_reset_datasource.dart';
 import 'package:pray_app/app/data/datasources/token_datasource.dart';
@@ -91,6 +93,11 @@ Future<void> initDependencies() async {
 
   // Controllers
   _registerControllers();
+
+  // Initialize locale datasource and load saved locale
+  final localeDataSource = getIt<LocaleDataSource>();
+  AppController.instance.initLocaleDataSource(localeDataSource);
+  await AppController.instance.loadSavedLocale();
 }
 
 void _registerGlobalServices() {
@@ -127,6 +134,10 @@ void _registerDataSources() {
 
   getIt.registerFactory<TokenDataSource>(
     () => TokenDataSourceImpl(secureStorage: getIt<SecureStorage>()),
+  );
+
+  getIt.registerFactory<LocaleDataSource>(
+    () => LocaleDataSourceImpl(secureStorage: getIt<SecureStorage>()),
   );
 
   getIt.registerFactory<DashboardDataSource>(

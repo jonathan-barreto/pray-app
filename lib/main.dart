@@ -1,9 +1,9 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
+import 'package:pray_app/app/app_controller.dart';
 import 'package:pray_app/app/core/routes/app_router.dart';
 import 'package:pray_app/app/core/theme/app_theme.dart';
 import 'package:pray_app/app/di/di.dart' as di;
@@ -19,15 +19,40 @@ Future<void> main() async {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    super.initState();
+    AppController.instance.addListener(_onLocaleChanged);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final deviceLocale = View.of(context).platformDispatcher.locale;
+      AppController.instance.setDefaultLocaleFromDevice(deviceLocale);
+    });
+  }
+
+  void _onLocaleChanged() {
+    setState(() {});
+  }
+
+  @override
+  void dispose() {
+    AppController.instance.removeListener(_onLocaleChanged);
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final Locale? forcedLocale = kDebugMode ? const Locale('en', 'US') : null;
+    final Locale? appLocale = AppController.instance.locale;
 
     return MaterialApp.router(
-      locale: forcedLocale,
+      locale: appLocale,
       title: 'Pray',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.theme,
@@ -43,8 +68,8 @@ class MyApp extends StatelessWidget {
         Locale('en'),
       ],
       localeResolutionCallback: (locale, supportedLocales) {
-        if (forcedLocale != null) {
-          return forcedLocale;
+        if (appLocale != null) {
+          return appLocale;
         }
 
         return supportedLocales.firstWhere(

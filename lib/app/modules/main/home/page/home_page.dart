@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:pray_app/app/di/di.dart';
 import 'package:pray_app/app/modules/main/home/controller/home_page_controller.dart';
 
@@ -11,7 +12,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late final HomePageController _controller;
-  bool _tabsInitialized = false;
 
   @override
   void initState() {
@@ -23,10 +23,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    if (!_tabsInitialized) {
-      _controller.initializeTabs(context);
-      _tabsInitialized = true;
-    }
+    _controller.initializeTabs(context);
   }
 
   Future<void> _loadData() async {
